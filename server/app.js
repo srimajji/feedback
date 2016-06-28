@@ -3,11 +3,10 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const log = require('./config/logger');
 const mongoose = require('mongoose');
-const autoIncrement = require('mongoose-auto-increment');
 
-const feedbackController = require('./server/controllers/feedback.controller.js');
-const companyController = require('./server/controllers/company.controller.js');
-const responseController = require('./server/controllers/response.controller.js');
+const feedbackController = require('./src/controllers/feedback.controller.js');
+const companyController = require('./src/controllers/company.controller.js');
+const responseController = require('./src/controllers/response.controller.js');
 
 const app = express();
 
