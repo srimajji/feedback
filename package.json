@@ -1,0 +1,27 @@
+{
+  "name": "feedback",
+  "version": "1.0.0",
+  "description": "tool to give feedback to companies",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon --debug app.js"
+  },
+  "keywords": [
+    "feedback"
+  ],
+  "author": "Sri Majji",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "mongoose": "^4.4.20",
+    "mongoose-auto-increment": "^5.0.1",
+    "mongoose-filter-properties": "^0.1.0",
+    "morgan": "^1.7.0",
+    "react": "^15.1.0",
+    "react-router": "^2.5.1",
+    "winston": "^2.2.0"
+  }
+}
