@@ -5,9 +5,9 @@ const log = require('./config/logger');
 const mongoose = require('mongoose');
 const autoIncrement = require('mongoose-auto-increment');
 
-const feedbackController = require('./controllers/feedback.controller.js');
-const companyController = require('./controllers/company.controller.js');
-const responseController = require('./controllers/response.controller.js');
+const feedbackController = require('./server/controllers/feedback.controller.js');
+const companyController = require('./server/controllers/company.controller.js');
+const responseController = require('./server/controllers/response.controller.js');
 
 const app = express();
 
