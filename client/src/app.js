@@ -1,20 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import Feedback from './components/Feedback';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import App from './containers/App';
+import configureStore from './utils/configureStore.dev';
+
+const store = configureStore();
+const container = <AppContainer><App store={store}/></AppContainer>;
 
 ReactDOM.render(
-    <AppContainer
-        component={ Feedback }
-    />,
+    container,
     document.getElementById('root')
 );
 
 if (module.hot) {
-    module.hot.accept('./components/Feedback', ()=> {
+    module.hot.accept('./containers/App', ()=> {
         ReactDOM.render(
-            <AppContainer component={ require('./components/Feedback').default }
-            />,
+            container,
             document.getElementById('root')
         );
     });
