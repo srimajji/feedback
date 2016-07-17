@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
 
+import NavBar from '../components/NavBar';
 class Admin extends Component {
     render() {
         return (
-            <nav>
-                <div className="nav-wrapper">
-                    <a href="#" className="brand-logo right">Logo</a>
-                    <ul id="nav-mobile" className="left hide-on-med-and-down">
-                        <li><a href="sass.html">Sass</a></li>
-                        <li><a href="badges.html">Components</a></li>
-                        <li><a href="collapsible.html">JavaScript</a></li>
-                    </ul>
+            <div>
+                <NavBar />
+                <div className="container">
+                    <h1> Feedback Admin Panel </h1>
                 </div>
-            </nav>
+            </div>
         );
     }
 }
