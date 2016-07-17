@@ -1,6 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
-
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
     devtool: 'eval',
     entry: [
@@ -16,7 +16,10 @@ module.exports = {
         publicPath: '/static/'
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.ProvidePlugin({
+            '$': 'jquery'
+        })
     ],
     resolve: {
         alias: {
@@ -28,11 +31,26 @@ module.exports = {
         'fallback': path.join(__dirname, 'node_modules')
     },
     module: {
-        loaders: [{
-            test: /\.jsx?$/,
-            loaders: ['babel'],
-            excludes: /node_modules/,
-            include: path.join(__dirname, 'src')
-        }]
+        loaders: [
+            {
+                test: /\.jsx?$/,
+                loaders: ['babel'],
+                excludes: /node_modules/,
+                include: path.join(__dirname, 'src')
+            },
+            {
+                test: /\.scss$/,
+                loaders: ["style", "css", "sass"]
+            },
+            {
+                test: /\.css$/,
+                loader: "style-loader!css-loader"
+            },
+            { 
+                test: /\.(png|woff|woff2|eot|ttf|svg)$/, 
+                loader: 'url-loader?limit=100000' 
+            }
+
+        ]
     }
 };

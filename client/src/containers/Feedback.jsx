@@ -5,7 +5,7 @@ class Feedback extends React.Component {
         return (
             <div>
                 <h1>Feedback app</h1>
-                <h3>This works right now</h3>
+                <h3>This is a feedback tool</h3>
             </div>
         );
     }
