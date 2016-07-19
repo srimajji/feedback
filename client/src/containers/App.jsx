@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import DevTools from './DevTools';
-import { Router, Route, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
+
 import Feedback from './Feedback';
 import Admin from './Admin';
+import Home from './Home';
 import routes from '../routes.js'
+
 class App extends Component {
     render() {
         const { store } = this.props;
@@ -13,10 +16,7 @@ class App extends Component {
         return (
             <Provider store={store}>
                 <div>
-                    <Router history={history}>
-                        <Route path='/' component={Admin} />
-                        <Route path="/admin" component={Admin} />
-                    </Router>
+                    <Router history={history} routes={routes} />
                     <DevTools />
                 </div>
             </Provider>

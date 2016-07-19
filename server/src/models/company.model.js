@@ -9,7 +9,7 @@ const categorySchema = mongoose.Schema({
 }, { _id: false });
 
 const feedbackStatusSchema = mongoose.Schema({
-	status: { 
+	name: { 
 		type: String, 
 		required: true 
 	},
