@@ -17,8 +17,12 @@ ReactDOM.render(
 
 if (module.hot) {
     module.hot.accept('./containers/App', ()=> {
+        const RootContainer = require('./containers/App').default; 
         ReactDOM.render(
-            container,
+            <AppContainer>
+                <RootContainer 
+                    store={ store } />
+            </AppContainer>,
             document.getElementById('root')
         );
     });
