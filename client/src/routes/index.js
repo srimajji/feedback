@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-import Feedback from '../containers/Feedback';
+import FeedbackContainer from '../containers/FeedbackContainer';
 import Home from '../containers/Home';
 
 export default (
     <Route path='/' component={Home}>
-        <IndexRoute component={Feedback} />
+        <IndexRoute component={FeedbackContainer} />
     </Route>
 )

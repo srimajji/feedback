@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Navbar from '../components/Navbar';
+import AddNewButton from '../components/AddNewButton';
 
-class Home extends React.Component {
+class Home extends Component {
     render() {
         return (
             <div>
                 <Navbar />
-                {this.props.children}
+                <div className='container'>
+                    {this.props.children}
+                    <AddNewButton />
+                </div>
             </div>
         );
     }

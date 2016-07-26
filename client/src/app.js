@@ -1,5 +1,7 @@
 import 'materialize-css/bin/materialize.css';
 import 'materialize-css/bin/materialize.js';
+import './stylesheets/global.scss';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';

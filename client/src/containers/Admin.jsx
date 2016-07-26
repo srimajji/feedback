@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import NavBar from '../components/NavBar';
+import Navbar from '../components/Navbar';
 class Admin extends Component {
     render() {
         return (

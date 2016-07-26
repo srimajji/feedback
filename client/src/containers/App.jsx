@@ -4,9 +4,6 @@ import DevTools from './DevTools';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 
-import Feedback from './Feedback';
-import Admin from './Admin';
-import Home from './Home';
 import routes from '../routes.js'
 
 class App extends Component {
