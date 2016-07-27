@@ -7,8 +7,16 @@ const AddNewButton = (props) => {
                 <i className='large material-icons'>mode_edit</i>
             </a>
             <ul>
-                <li><a className='btn-floating red tooltipped' data-position='left' data-tooltip='New company'><i className='material-icons'>business</i></a></li>
-                <li><a className='btn-floating red tooltipped' data-position='left' data-tooltip='New feedback'><i className='material-icons'>message</i></a></li>
+                <li>
+                    <a className='btn-floating red tooltipped' data-position='left' data-tooltip='New company'>
+                        <i className='material-icons'>business</i>
+                    </a>
+                </li>
+                <li>
+                    <a className='btn-floating red tooltipped' data-position='left' data-tooltip='New feedback'>
+                        <i className='material-icons'>message</i>
+                    </a>
+                </li>
     	    </ul>
         </div>
     );

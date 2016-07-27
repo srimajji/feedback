@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 
-const CompanyCard = ({company}) => {
+const RewardCard = ({reward}) => {
     return (
         <div className='row'>
             <div className='col s12 m6'>
                 <div className='card blue-grey darken-1'>
                     <div className='card-content white-text'>
-                        <span className='card-title'>{company.name}</span>
-                        <p>{company.description}</p>
+                        <span className='card-title'>{reward.name}</span>
+                        <p>{reward.description}</p>
                     </div>
                     <div className='card-action right-align'>
-                        <a href='#'>Edit</a>
+                        <a href='#'>Redeem</a>
                     </div>
                 </div>
             </div>
@@ -18,4 +18,4 @@ const CompanyCard = ({company}) => {
     )
 }
 
-export default CompanyCard;
+export default RewardCard;

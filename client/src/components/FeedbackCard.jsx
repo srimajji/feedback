@@ -11,7 +11,7 @@ class FeedbackCard extends Component {
                             <p>This is an exmaple feedback i gave to best buy earlier</p>
                         </div>
                         <div className='card-action right-align'>
-                            <a href='#'>Read More...</a>
+                            <a href='#'>Read more</a>
                         </div>
                     </div>
                 </div>

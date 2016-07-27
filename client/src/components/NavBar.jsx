@@ -3,7 +3,11 @@ import { Link } from 'react-router';
 
 class Navbar extends Component {
     componentDidMount() {
-        $('.button-collapse').sideNav();
+        $('.button-collapse').sideNav({
+            menuWidth: 150,
+            edge: 'left',
+            closeOnClick: true
+        });
     }
 
     render() {
@@ -14,12 +18,12 @@ class Navbar extends Component {
                         <a href='#' className='brand-logo right'>Summer16</a>
                         <ul className='left hide-on-med-and-down'>
                             <li><Link to='/'>Feedbacks</Link></li>
-                            <li><a href='#'>Rewards</a></li>
+                            <li><Link to='rewards'>Rewards</Link></li>
                             <li><Link to='companies'>Companies</Link></li>
                         </ul>
                         <ul id='nav-mobile' className='side-nav'>
                             <li><Link to='/'>Feedbacks</Link></li>
-                            <li><a href='#'>Rewards</a></li>
+                            <li><Link to='rewards'>Rewards</Link></li>
                             <li><Link to='companies'>Companies</Link></li>
                         </ul>
                         <a href='#' data-activates='nav-mobile' className='button-collapse'><i className='material-icons'>menu</i></a>
