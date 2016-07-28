@@ -11,7 +11,7 @@ module.exports = {
         './src/app'
     ],
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
         publicPath: '/static/'
     },
@@ -23,20 +23,21 @@ module.exports = {
     ],
     resolve: {
         alias: {
-            'react': path.join(__dirname, 'node_modules', 'react')
+            'react': path.resolve(__dirname, 'node_modules', 'react')
         },
-        extensions: ['', '.js', '.jsx']
+        extensions: ['', '.js', '.jsx'],
+        modulesDirectories: ['node_modules'],
     },
     resolveLoader: {
-        'fallback': path.join(__dirname, 'node_modules')
+        'fallback': path.resolve(__dirname, 'node_modules')
     },
     module: {
         loaders: [
             {
                 test: /\.jsx?$/,
                 loaders: ['babel'],
-                excludes: /node_modules/,
-                include: path.join(__dirname, 'src')
+                exclude: /node_modules/,
+                include: path.resolve(__dirname, 'src')
             },
             {
                 test: /\.scss$/,
