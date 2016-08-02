@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router';
 import NewFeedbackModal from './NewFeedbackModal';
-
-
+import NewCompanyModal from './NewCompanyModal';
 
 class AddNewButton extends Component {
     constructor() {
         super();
 
         this.onClickNewFeedback = this.onClickNewFeedback.bind(this);
+        this.onClickNewCompany = this.onClickNewCompany.bind(this);
     }
 
     onClickNewFeedback() {
         $('#new-feedback-modal').openModal();
+    }
+
+    onClickNewCompany() {
+        $('#new-company-modal').openModal();
     }
 
     render() {
@@ -24,13 +28,13 @@ class AddNewButton extends Component {
                         <i className='large material-icons'>mode_edit</i>
                     </a>
                     <ul>
-                        <li onClick={this.onClickNewFeedback}>
-                            <a className='btn-floating red tooltipped' data-position='left' data-tooltip='New company'>
+                        <li>
+                            <Link to='/companies/new' className='btn-floating red' data-position='left' data-tooltip='New company'>
                                 <i className='material-icons'>business</i>
-                            </a>
+                            </Link>
                         </li>
                         <li onClick={this.onClickNewFeedback}>
-                            <a className='btn-floating red tooltipped' data-position='left' data-tooltip='New feedback'>
+                            <a className='btn-floating red' data-position='left' data-tooltip='New feedback'>
                                 <i className='material-icons'>message</i>
                             </a>
                         </li>

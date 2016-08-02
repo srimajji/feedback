@@ -59,7 +59,7 @@ router.route('/')
 		company.save((err) => {
 			if(err) {
 				log.error('Error saving company ', err);
-				res.send(err);
+				res.status(400).send(err);
 			} else {
 				log.info('Succesfully saved company ', company._id);
 				res.status(201).json(company);

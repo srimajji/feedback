@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const log = require('./config/logger');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const feedbackController = require('./src/controllers/feedback.controller.js');
 const companyController = require('./src/controllers/company.controller.js');
@@ -15,6 +16,7 @@ log.debug('Overriding Express logger');
 app.use(morgan('combined', { 'stream': log.stream }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
 // set up routes
 const apiVer = 'v1';

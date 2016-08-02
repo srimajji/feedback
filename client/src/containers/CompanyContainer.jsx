@@ -5,7 +5,9 @@ import CompanyCardList from '../components/CompanyCardList';
 class CompanyContainer extends Component {
     render() {
         return (
-            <div><CompanyCardList /></div>
+            <div>
+                <CompanyCardList />
+            </div>
         );
     }
 }

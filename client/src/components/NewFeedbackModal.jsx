@@ -9,6 +9,7 @@ const NewFeedbackModal = () => {
 			</div>
 			<div className='modal-footer'>
 				<a href='#' className='modal-action modal-close waves-effect waves-green btn-flat'>Submit</a>
+				<a href='#' className='modal-action modal-close waves-effect waves-green btn-flat'>Cancel</a>
 			</div>
 		</div>
 	);
