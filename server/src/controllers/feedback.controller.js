@@ -59,7 +59,9 @@ router.route('/:id/shallow')
 
 router.route('/')
 	.get((req, res) => {
-		Feedback.find((err, feedbacks) => {
+		Feedback.find()
+			.populate('company')
+			.exec((err, feedbacks) => {
 			if(err) {
 				log.error(err);
 				res.status(500).json({ message: 'Internal Error' });

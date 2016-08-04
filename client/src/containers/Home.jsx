@@ -9,7 +9,6 @@ class Home extends Component {
                 <Navbar />
                 <div className='container'>
                     {this.props.children}
-                    <AddNewButton />
                 </div>
             </div>
         );

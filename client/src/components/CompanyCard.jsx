@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const CompanyCard = ({company}) => {
+const CompanyCard = ({company, newFeedbackOnClick}) => {
     return (
         <div className='row'>
             <div className='col s12 m6'>
@@ -10,6 +10,7 @@ const CompanyCard = ({company}) => {
                         <p>{company.description}</p>
                     </div>
                     <div className='card-action right-align'>
+                        <a onClick={() => newFeedbackOnClick(company)} >Feedback</a>
                         <a href='#'>Edit</a>
                     </div>
                 </div>

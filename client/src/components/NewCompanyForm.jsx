@@ -60,34 +60,33 @@ class NewCompanyForm extends Component {
 						<div className='row'>
 							<div className='input-field col s12'>
 								<input placeholder='Enter company name' type='text' className='validate' ref='company_name' required/>
-								<label htmlFor='first_name'>Name</label>
+								<label htmlFor='first_name' className='active'>Name</label>
 							</div>
 							<div className='input-field col s12'>
 								<input placeholder='Enter company alias (must be unique)' type='text' className='validate' ref='company_alias' required/>
-								<label htmlFor='last_name'>Alias</label>
+								<label htmlFor='last_name' className='active'>Alias</label>
 							</div>
 							<div className='input-field col s12'>
 								<input placeholder='Enter description' type='text' className='validate' ref='company_description' />
-								<label htmlFor='last_name'>Description</label>
+								<label htmlFor='last_name' className='active'>Description</label>
 							</div>
 							<div className='input-field col s12'>
 								<input placeholder='Website url' type='url' className='validate' ref='company_website'/>
-								<label htmlFor='last_name'>Website</label>
+								<label htmlFor='last_name' className='active'>Website</label>
 							</div>
 							<div className='input-field col s12'>
 								<input placeholder='Categories (seperated by space)' type='text' className='validate' ref='company_categories'/>
-								<label htmlFor='last_name'>Categories</label>
+								<label htmlFor='last_name' className='active'>Categories</label>
 							</div>
 							<div className='input-field col s12'>
 								<input placeholder='Feedback status types (seperated by space)' type='text' className='validate' ref='company_status_types' required/>
-								<label htmlFor='last_name'>Status types</label>
+								<label htmlFor='last_name' className='active'>Status types</label>
 							</div>
 							<button className="btn waves-effect waves-light col s12" type='submit'>Submit
 								<i className="material-icons right">send</i>
 							</button>
 						</div>
 					</form>
-					<pre>{this.state.newCompany}</pre>
 				</div>
 		);	
 	}

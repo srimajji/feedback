@@ -19,11 +19,12 @@ class CompanyCardList extends Component {
     }
 
     render() {
+        const newFeedbackOnClick = this.props.newFeedbackOnClick;
         return (
             <div className='row'>
                 <ul className='col s12 m6'>
                     {this.state.companies.map((company, index) => {
-                        return <CompanyCard key={index} company={company} />;
+                        return <CompanyCard key={index} company={company} newFeedbackOnClick={newFeedbackOnClick} />;
                     })}
                 </ul>
             </div>
