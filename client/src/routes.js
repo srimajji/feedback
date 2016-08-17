@@ -10,5 +10,7 @@ import HomeContainer from './containers/HomeContainer';
 export default (
     <Route path='/' component={MainContainer}>
         <IndexRoute component={HomeContainer} />
+        <Route path='feedbacks' component={FeedbackContainer}>
+        </Route>
     </Route>
 )

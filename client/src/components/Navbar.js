@@ -15,7 +15,7 @@ class Navbar extends Component {
             <div className='navbar-fixed'>
                 <nav className='light-blue' role='navigation'>
                     <div className='nav-wrapper container'>
-                        <a href='#' className='brand-logo right'>Summer16</a>
+                        <a href='#' className='brand-logo right'>SSYX</a>
                         <ul className='left hide-on-med-and-down'>
                             <li><Link to='/'>Home</Link></li>
                             <li><Link to='feedbacks'>Feedbacks</Link></li>

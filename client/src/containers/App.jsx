@@ -14,6 +14,7 @@ class App extends Component {
             <Provider store={store}>
                 <div>
                     <Router history={history} routes={routes} />
+                    <DevTools />
                 </div>
             </Provider>
         );
