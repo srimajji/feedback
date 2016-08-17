@@ -17,13 +17,13 @@ class Navbar extends Component {
                     <div className='nav-wrapper container'>
                         <a href='#' className='brand-logo right'>Summer16</a>
                         <ul className='left hide-on-med-and-down'>
-                            <li><Link to='/'>Feedbacks</Link></li>
-                            <li><Link to='rewards'>Rewards</Link></li>
+                            <li><Link to='/'>Home</Link></li>
+                            <li><Link to='feedbacks'>Feedbacks</Link></li>
                             <li><Link to='companies'>Companies</Link></li>
                         </ul>
                         <ul id='nav-mobile' className='side-nav'>
-                            <li><Link to='/'>Feedbacks</Link></li>
-                            <li><Link to='rewards'>Rewards</Link></li>
+                            <li><Link to='/'>Home</Link></li>
+                            <li><Link to='feedbacks'>Feedbacks</Link></li>
                             <li><Link to='companies'>Companies</Link></li>
                         </ul>
                         <a href='#' data-activates='nav-mobile' className='button-collapse'><i className='material-icons'>menu</i></a>
