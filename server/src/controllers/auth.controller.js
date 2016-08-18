@@ -12,8 +12,7 @@ router.route('/')
         const password = req.body.password;
         User.findOne(
             {
-                username: username,
-                password: password
+                username: username
             }, (err, user) => {
             
             if(err) {
@@ -34,6 +33,9 @@ router.route('/')
                 res.json({
                     success: true,
                     message: 'This token will expires in 24 hours',
+                    id: user._id,
+                    name: user.name,
+                    username: user.username,
                     token: token
                 });
             }

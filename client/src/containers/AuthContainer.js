@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 
-import LogInForm from '../components/LogInForm';
-import { authUser } from '../actions';
+import LoginForm from '../components/LoginForm';
 
 class AuthContainer extends Component {
+    _login(event) {
+        event.preventDefault();
+
+    }
 
     render() {
         return (
             <div className='auth-container'>
-                <LogInForm />
+                <LoginForm />
             </div>
         );
     }
