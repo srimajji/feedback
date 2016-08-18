@@ -3,19 +3,19 @@ import constants from '../constants';
 const apiUri = 'http://localhost:3000/api/';
 
 const newFeedback = (feedback) => {
-    dispatch({
+    return {
         type: constants.FEEDBACK_NEW,
         title: feedback.title,
         body: feedback.body
-    });
+    };
 }
 
 const newCompany = (company) => {
-    dispatch({
+    return {
         type: constants.COMPANY_NEW,
         name: company.name,
         description: company.description
-    });
+    };
 }
 
 const authUser = (username, password) => {
@@ -32,4 +32,4 @@ const authUser = (username, password) => {
     // });
 }
 
-export default { newFeedback, newCompany, authUser };
+export { newFeedback, newCompany, authUser };

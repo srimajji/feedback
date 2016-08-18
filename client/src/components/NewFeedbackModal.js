@@ -21,7 +21,7 @@ class NewFeedbackModal extends Component {
 		event.preventDefault();
 		
 		const feedback = { title: this.refs.title.value, body: this.refs.body.value };
-		newFeedback(feedback);
+		this.props.dispatch(newFeedback(feedback));
 		$('#new-feedback-modal').closeModal();
 	}
 
