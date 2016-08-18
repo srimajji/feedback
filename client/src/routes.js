@@ -6,10 +6,12 @@ import CompanyContainer from './containers/CompanyContainer';
 import NewCompanyContainer from './containers/NewCompanyContainer';
 import MainContainer from './containers/MainContainer';
 import HomeContainer from './containers/HomeContainer';
+import AuthContainer from './containers/AuthContainer';
 
 export default (
     <Route path='/' component={MainContainer}>
         <IndexRoute component={HomeContainer} />
+        <Route path='auth' component={AuthContainer} />
         <Route path='feedbacks' component={FeedbackContainer}>
         </Route>
     </Route>

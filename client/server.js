@@ -1,20 +1,6 @@
-var webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
-var config = require('./webpack.dev.config');
+const express = require('express');
+const app = express();
 
-var port = 3001;
-new WebpackDevServer(webpack(config), {
-    publicPath: config.output.publicPath,
-    hot: true,
-    quiet: true,
-    historyApiFallback: true,
-    status: {
-        colors: true
-    }
-}). listen(port, 'localhost', function(err) {
-    if(err) {
-        console.log(err);
-    }
+app.use(express.static(__dirname + '/'));
 
-    console.log('Listening at localhost: '+ port);
-});
+app.listen(process.env.PORT || 3000);

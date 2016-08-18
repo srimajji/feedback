@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import constants from '../constants';
+import { newFeedback } from '../actions';
+
+@connect(state => ({}))
 
 class NewFeedbackModal extends Component {
 	constructor() {
 		super();
 
-		this.state = {
-			selectView: null
-		};
 		this._handleFormSubmit = this._handleFormSubmit.bind(this);
 	}
 
@@ -15,27 +18,27 @@ class NewFeedbackModal extends Component {
 	}
 
 	_handleFormSubmit(event) {
-		const feedback = {
-			description: this.refs.feedback_body.value,
-			category: this.refs.feedback_category.value
-		}
-		this.props.onSubmitFeedback(feedback);
 		event.preventDefault();
+		
+		const feedback = { title: this.refs.title.value, body: this.refs.body.value };
+		newFeedback(feedback);
+		$('#new-feedback-modal').closeModal();
 	}
+
 	render () {
 		return (
 			<div id='new-feedback-modal' className='modal'>
 				<div className='modal-content'>
-					<h4>New Feedback</h4>
+					<h4>Add new feedback</h4>
 					<form className='col s12 m6' action='' ref='new_feedback' onSubmit={this._handleFormSubmit}>
 						<div className='row'>
 							<div className='input-field col s12'>
-								<textarea placeholder='Enter feedback' type='text' className='validate materialize-textarea' ref='feedback_body' required/>
-								<label htmlFor='body' className='active'>Description</label>
+								<input placeholder='Enter feedback' type='text' className='validate materialize-input' ref='title' required/>
+								<label htmlFor='title' className='active'>Title</label>
 							</div>
 							<div className='input-field col s12'>
-								<input placeholder='Enter category' type='text' className='validate materialize-textarea' ref='feedback_category' required/>
-								<label htmlFor='category' className='active'>Category</label>
+								<textarea placeholder='Enter description' type='text' className='validate materialize-textarea' ref='body' required/>
+								<label htmlFor='decription' className='active'>Description</label>
 							</div>
 						</div>
 						<div className='right-align'>

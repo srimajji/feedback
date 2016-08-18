@@ -1,6 +1,10 @@
 
 # Created by https://www.gitignore.io/api/osx,windows,intellij,sublimetext,code,node
 
+### Project ###
+client/dist
+
+
 ### OSX ###
 *.DS_Store
 .AppleDouble
