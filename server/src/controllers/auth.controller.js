@@ -36,7 +36,7 @@ router.route('/')
                     id: user._id,
                     name: user.name,
                     username: user.username,
-                    token: token
+                    jwtToken: token
                 });
             }
         });
