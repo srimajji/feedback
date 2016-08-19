@@ -1,7 +1,11 @@
-import { createStore, combineReducers, compose } from 'redux';
+import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import createLogger from 'redux-logger';
 import { persistState } from 'redux-devtools';
 import CombineReducers from '../reducers/CombineReducers';
 import DevTools from '../containers/DevTools';
+
+const loggerMiddleware = createLogger();
 
 const enhancer = compose(
     DevTools.instrument(),
@@ -12,8 +16,14 @@ const enhancer = compose(
     )
 );
 
-function configureStore(initialState) {
-    const store = createStore(CombineReducers, initialState, enhancer)
+function configureStore() {
+    const store = createStore(
+        CombineReducers, 
+        enhancer,
+        applyMiddleware(
+            thunkMiddleware
+        )
+    )
 
     if (module.hot) {
         module.hot.accept('../reducers/CombineReducers', () => 

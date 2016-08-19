@@ -9,7 +9,6 @@ const initialState = {
 function AuthReducer(state = initialState, action) {
     switch(action.type) {
         case constants.AUTHENTICATE:
-            console.log(state);
             return Object.assign({}, state, {
                 id: action.id,
                 name: action.name,

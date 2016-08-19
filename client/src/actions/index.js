@@ -22,6 +22,21 @@ const newCompany = (company) => {
 export const authUser = (username = string, password = string) => {
     // move ajax call somewhere else
     const uri = apiUri + 'auth';
+    const reqData = {
+        username: username,
+        password: password
+    };
+    return dispatch => {
+        return $.post(uri, reqData)
+                    .done((response) => dispatch({
+                        type: constants.AUTHENTICATE,
+                        id: response.id,
+                        username: response.username,
+                        name: response.name,
+                        jwtToken: response.jwtToken
+                    }))
+                    .error((error) => console.log(error));
+    }
     // $.ajax({
     //     url: uri,
     //     type: 'POST',
@@ -41,11 +56,11 @@ export const authUser = (username = string, password = string) => {
     //             type: constants.AUTHENTICATE_FAIL , error: error.message
     //         };
     //     });
-    return {
-        type: constants.AUTHENTICATE,
-        name: username,
-        jwtToken: '12323223'
-    };
+    // return {
+    //     type: constants.AUTHENTICATE,
+    //     name: username,
+    //     jwtToken: '12323223'
+    // };
 }
 
 export { newFeedback, newCompany, authUser };

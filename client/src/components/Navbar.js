@@ -11,6 +11,8 @@ class Navbar extends Component {
     }
 
     render() {
+
+        const { jwtToken } = this.props;
         return (
             <div className='navbar-fixed'>
                 <nav className='light-blue' role='navigation'>
@@ -20,13 +22,11 @@ class Navbar extends Component {
                             <li><Link to='/'>Home</Link></li>
                             <li><Link to='feedbacks'>Feedbacks</Link></li>
                             <li><Link to='companies'>Companies</Link></li>
-                            <li><Link to='auth'>Log In</Link></li>
                         </ul>
                         <ul id='nav-mobile' className='side-nav'>
                             <li><Link to='/'>Home</Link></li>
                             <li><Link to='feedbacks'>Feedbacks</Link></li>
                             <li><Link to='companies'>Companies</Link></li>
-                            <li><Link to='auth'>Log In</Link></li>
                         </ul>
                         <a href='#' data-activates='nav-mobile' className='button-collapse'><i className='material-icons'>menu</i></a>
                     </div>

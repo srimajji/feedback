@@ -31,9 +31,8 @@ router.route('/')
 
                 // return information
                 res.json({
-                    success: true,
-                    message: 'This token will expires in 24 hours',
                     id: user._id,
+                    expiresIn: 60 * 24,
                     name: user.name,
                     username: user.username,
                     jwtToken: token
