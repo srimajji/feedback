@@ -2,8 +2,11 @@ import keyMirror from 'keyMirror';
 
 export default keyMirror({
 
-    AUTHENTICATE: null,
-    
+    LOGIN_REQUEST: null,
+    LOGIN_SUCCESS: null,
+    LOGIN_FAIL: null,
+    LOGOUT_SUCCESS: null,
+
     COMPANY_NEW: null,
     COMPANY_NEW_SUCCESS: null,
     COMPANY_NEW_FAIL: null,
