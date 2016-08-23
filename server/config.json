@@ -7,7 +7,7 @@
     },
     "production": {
         "port": "3000",
-        "mongo_uri": "mongodb://localhost:27017/feedback",
+        "mongo_uri": "mongodb://sri:feedbackSSYX@ds013966.mlab.com:13966/feedback",
         "jwtTokenSecret": "feedbackserverapp",
         "debug_level": "INFO"
     }
