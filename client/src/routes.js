@@ -12,7 +12,7 @@ export default (
     <Route path='/' component={MainContainer}>
         <IndexRoute component={HomeContainer} />
         <Route path='auth' component={AuthContainer} />
-        <Route path='feedbacks' component={FeedbackContainer}>
-        </Route>
+        <Route path='submissions' component={FeedbackContainer} />
+        <Route path='companies' component={CompanyContainer} />
     </Route>
 )

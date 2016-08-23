@@ -1,51 +1,30 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
+import { connect } from 'react-redux';
 
-import CompanyCardList from '../components/CompanyCardList';
+import Card from '../components/Card';
 import NewFeedbackModal from '../components/NewFeedbackModal';
 
+@connect(state => ({ ...state.CompanyReducer }))
+
 class CompanyContainer extends Component {
-    constructor() {
-        super();
-
-        this.state = {
-            currentCompany: null
-        };
-
-        this._newFeedbackOnClick = this._newFeedbackOnClick.bind(this);
-        this._onSubmitFeedback = this._onSubmitFeedback.bind(this);
-    }
-
-    componentDidMount() {
-        // here
-    }
-
-    _newFeedbackOnClick(company) {
-        this.setState({ currentCompany: company });
+    _openNewFeedbackModal() {
         $('#new-feedback-modal').openModal();
     }
 
-    _onSubmitFeedback(feedback) {
-        $.ajax({
-			url: 'http://localhost:3000/api/feedbacks',
-			type: 'POST',
-			data: {
-				body: feedback.description,
-                category: feedback.category,
-                company: this.state.currentCompany._id
-			}}).done((response) => {
-				const notification = 'Feedback ' + response._id + ' created successfully';
-				Materialize.toast(notification, 4000);
-			}).fail((error) => {
-				console.error(JSON.stringify(error.responseText));
-        });
-        $('#new-feedback-modal').closeModal();
-    }
-
     render() {
+        const { companies, dispatch } = this.props;
         return (
             <div>
-                <NewFeedbackModal onSubmitFeedback={this._onSubmitFeedback} company={this.state.currentCompany}/>
-                <CompanyCardList newFeedbackOnClick={this._newFeedbackOnClick} />
+                <div className='row'>
+                    <div className='col s12'>
+                        { companies.map(( company, key ) => {
+                            return <Card title={company.name} body={company.description} key={key}/>
+                        })}
+                        <a className='waves-effect waves-light btn' onClick={this._openNewFeedbackModal}>New feedback</a>
+                    </div>
+                </div>
+                <NewFeedbackModal />
             </div>
         );
     }

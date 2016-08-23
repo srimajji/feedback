@@ -51,7 +51,7 @@ class Navbar extends Component {
                         { isAuthenticated ?
                             <ul className='left hide-on-med-and-down'>
                                 <li><Link to='/'>Home</Link></li>
-                                <li><Link to='feedbacks'>Feedbacks</Link></li>
+                                <li><Link to='submissions'>Submissions</Link></li>
                                 <li><Link to='companies'>Companies</Link></li>
                             </ul> 
                             : logoutDesktopMenu
@@ -59,7 +59,7 @@ class Navbar extends Component {
                         { isAuthenticated ?
                             <ul id='nav-mobile' className='side-nav'>
                                 <li><Link to='/'>Home</Link></li>
-                                <li><Link to='feedbacks'>Feedbacks</Link></li>
+                                <li><Link to='submissions'>Submissions</Link></li>
                                 <li><Link to='companies'>Companies</Link></li>
                             </ul> : logoutMobileMenu
                         }

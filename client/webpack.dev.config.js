@@ -23,6 +23,11 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.ProvidePlugin({
             'window.jQuery': 'jquery'
+        }),
+        new webpack.DefinePlugin({
+            "process.env": {
+                "NODE_ENV": JSON.stringify("development"),
+            }
         })
     ],
     resolve: {
