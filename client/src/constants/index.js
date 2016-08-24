@@ -1,6 +1,6 @@
-import keyMirror from '../utils/keyMirror';
+import objMirror from '../utils/objMirror';
 
-export default keyMirror({
+export default objMirror({
 
     LOGIN_REQUEST: null,
     LOGIN_SUCCESS: null,
