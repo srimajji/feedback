@@ -14,17 +14,16 @@ const enhancer = compose(
     )
 );
 
-function configureStore(initialState) {
+function configureStore() {
     const store = createStore(
         CombineReducers, 
-        initialState, 
-        enhancer, 
+        enhancer,
         applyMiddleware(
             thunkMiddleware,
             loggerMiddleware
         )
     )
-    
+
     return store;
 }
 
