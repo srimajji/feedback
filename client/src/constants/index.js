@@ -1,6 +1,18 @@
-import objMirror from '../utils/objMirror';
+function keyMirror(obj) {
+  var ret = {};
+  var key;
+  if (!(obj instanceof Object && !Array.isArray(obj))) {
+    throw new Error('objMirror(...): Argument must be an object.');
+  }
+  for (key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      ret[key] = key;
+    }
+  }
+  return ret;
+};
 
-export default objMirror({
+export default keyMirror({
 
     LOGIN_REQUEST: null,
     LOGIN_SUCCESS: null,
