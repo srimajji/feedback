@@ -57,7 +57,7 @@ connection.once('open', () => {
 	log.info('Successfully connected to', uri);
 });
 
-const port = appConfig.port;
+const port = process.env.PORT || appConfig.port;
 app.listen(port, () => {
 	log.info('Environment: ' + app.get('env'));
 	log.info('Server running at http://localhost:', port);
