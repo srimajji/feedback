@@ -14,8 +14,8 @@ function CompanyReducer(state = initialState, action) {
             return Object.assign({}, state, {
                 companies: [
                     ...state.companies, {
-                        name: action.title,
-                        alias: action.body,
+                        name: action.name,
+                        alias: action.alias,
                         description: action.description
                     }
                 ]

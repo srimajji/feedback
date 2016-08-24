@@ -3,13 +3,13 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 import Card from '../components/Card';
-import NewFeedbackModal from '../components/NewFeedbackModal';
+import NewCompanyModal from '../components/NewCompanyModal';
 
 @connect(state => ({ ...state.CompanyReducer }))
 
 class CompanyContainer extends Component {
-    _openNewFeedbackModal() {
-        $('#new-feedback-modal').openModal();
+    _openNewCompanyModal() {
+        $('#new-company-modal').openModal();
     }
 
     render() {
@@ -21,10 +21,10 @@ class CompanyContainer extends Component {
                         { companies.map(( company, key ) => {
                             return <Card title={company.name} body={company.description} key={key}/>
                         })}
-                        <a className='waves-effect waves-light btn' onClick={this._openNewFeedbackModal}>New feedback</a>
+                        <a className='waves-effect waves-light btn' onClick={this._openNewCompanyModal}>New company</a>
                     </div>
                 </div>
-                <NewFeedbackModal />
+                <NewCompanyModal />
             </div>
         );
     }

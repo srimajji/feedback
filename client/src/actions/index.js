@@ -11,10 +11,11 @@ export const newFeedback = (feedback) => {
     };
 }
 
-const newCompany = (company) => {
+export const newCompany = (company) => {
     return {
         type: constants.COMPANY_NEW,
         name: company.name,
+        alias: company.alias,
         description: company.description
     };
 }

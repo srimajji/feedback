@@ -27,8 +27,8 @@ const companySchema = mongoose.Schema({
 		state: String,
 		zip: Number
 	},
-	categories: [categorySchema],
-	feedbackStatuses: [feedbackStatusSchema]
+	categories: ['Employee', 'Store', 'Suggestions'],
+	feedbackStatuses: ['Open', 'In Review', 'Closed']
 }, { timestamps: true , select: false });
 
 module.exports = mongoose.model('Company', companySchema);
