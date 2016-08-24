@@ -1,7 +1,7 @@
 import constants from '../constants';
 
 const initialState = {
-    feedbacks: [{title: 'feedback', body: 'feedback body'}]
+    feedbacks: [{title: 'Sample submission', body: 'submission body'}]
 };
 
 function FeedbackReducer(state = initialState, action) {

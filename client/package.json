@@ -8,8 +8,11 @@
     "start": "npm run build && npm run serve",
     "dev": "node server.dev.js",
     "serve": "node server.js",
-    "prod": "NODE_ENV=production webpack --progress --colors --config --watch webpack.prod.config.js",
-    "build": "NODE_ENV=production webpack --progress --colors --config webpack.prod.config.js"
+    "prod": "webpack --progress --colors --config --watch webpack.prod.config.js",
+    "build": "webpack --progress --colors --config webpack.prod.config.js"
+  },
+ "engines": {
+      "node": "6.3.0"
   },
   "author": "Sri Majji",
   "license": "ISC",

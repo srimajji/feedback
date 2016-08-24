@@ -22,7 +22,7 @@ class FeedbackContainer extends Component {
                         { feedbacks.map(( feedback, key ) => {
                             return <Card title={feedback.title} body={feedback.body} key={key}/>
                         })}
-                        <a className='waves-effect waves-light btn' onClick={this._openNewFeedbackModal}>New feedback</a>
+                        <a className='waves-effect waves-light btn' onClick={this._openNewFeedbackModal}>New submission</a>
                     </div>
                 </div>
                 <NewFeedbackModal />
