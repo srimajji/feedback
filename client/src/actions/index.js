@@ -1,6 +1,6 @@
 import constants from '../constants';
 
-const apiUri = 'http://localhost:3000/api/';
+const apiUri = process.env.API_URL;
 
 
 export const newFeedback = (feedback) => {

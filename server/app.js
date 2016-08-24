@@ -31,7 +31,7 @@ app.use(cors());
 
 // set up routes
 const apiVer = 'v1';
-app.use('/auth', authController);
+app.use('/api/auth', authController);
 app.use('/api', apiController); // token required to use below api routes
 app.use('/api/feedbacks', feedbackController);
 app.use('/api/companies', companyController);

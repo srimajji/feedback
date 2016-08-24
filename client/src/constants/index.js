@@ -1,4 +1,4 @@
-import keyMirror from 'keyMirror';
+import keyMirror from '../utils/keyMirror';
 
 export default keyMirror({
 
@@ -13,5 +13,5 @@ export default keyMirror({
 
     FEEDBACK_NEW: null,
     FEEDBACK_NEW_SUCCESS: null,
-    FEEDBACK_NEW_FAIL:null,
+    FEEDBACK_NEW_FAIL: null
 });
