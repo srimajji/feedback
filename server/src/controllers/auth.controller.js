@@ -41,4 +41,31 @@ router.route('/')
         });
     });
 
+router.route('/signup')
+    .post((req, res) => {
+        const user = new User({
+            name: req.body.name,
+            username: req.body.username,
+            password: req.body.password
+        });
+        user.save((err) => {
+            if(err) {
+                log.error(err.errmsg);
+                res.status(400).json({ error: 'User already exists' });
+            } else {
+                log.info('User saved successfully ', user.username);
+                const token = jwt.sign(user, req.app.get('jwtTokenSecret'), {
+                        expiresIn: 60 * 24 // expires in 24 hours
+                    });
+                res.json({
+                        id: user._id,
+                        expiresIn: 60 * 24,
+                        name: user.name,
+                        username: user.username,
+                        jwtToken: token
+                });
+            }
+        });
+    });
+
 module.exports = router;
