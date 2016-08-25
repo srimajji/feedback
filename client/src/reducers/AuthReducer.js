@@ -2,7 +2,7 @@ import constants from '../constants';
 
 const initialState = {
     isFetching: false,
-    isAuthenticated: localStorage.getItem('user_jwtToken') ? true : false,
+    isAuthenticated: localStorage.getItem('user_token') ? true : false,
     errorMsg: '',
     user: {
         id: null,

@@ -2,6 +2,9 @@ import constants from '../constants';
 
 const apiUri = process.env.API_URL;
 
+const getToken = () => {
+    return localStorage.getItem('user_token');
+}
 
 export const newFeedback = (feedback) => {
     return {
@@ -12,12 +15,53 @@ export const newFeedback = (feedback) => {
 }
 
 export const newCompany = (company) => {
-    return {
-        type: constants.COMPANY_NEW,
-        name: company.name,
-        alias: company.alias,
-        description: company.description
+    const url = apiUri + 'companies';
+    const categories = [ {name: 'Employee'}, {name : 'Store' }, { name: 'Suggestions'}];
+    const feedbackStatuses = [ {name: 'Open'} , {name: 'In review'}, {name: 'Closed'}];
+    const newCompany = Object.assign({}, company, { categories: categories, feedbackStatuses: feedbackStatuses });
+    return dispatch => {
+        return $.ajax({
+            url: url,
+            type: 'post',
+            data: newCompany,
+            headers: { 'x-access-token' : getToken() }
+        })
+        .done((response) => {
+            dispatch({
+                type: constants.COMPANY_NEW_SUCCESS,
+                company: response
+            });
+        })
+        .error((error) => {
+            dispatch({
+                type: constants.COMPANY_NEW_FAIL,
+                error: error
+            });
+        });
     };
+}
+
+export const getCompanyList = () => {
+    const url = apiUri + 'companies';
+    return dispatch => {
+        return $.ajax({
+            url: url,
+            type: 'get',
+            headers : { 'x-access-token' : getToken() }
+        })
+        .done(response => {
+            dispatch({
+                type: constants.COMPANY_LIST_SUCCESS,
+                companies: response
+            });
+        })
+        .error(error => {
+            dispatch({
+                type: constants.COMPANY_LIST_FAIL,
+                error: error
+            });
+        });
+    }
 }
 
 export const authUser = (username = string, password = string) => {
@@ -34,7 +78,7 @@ export const authUser = (username = string, password = string) => {
                             type: constants.LOGIN_SUCCESS,
                             user: response
                         });
-                        localStorage.setItem('user_jwtToken', response.jwtToken)
+                        localStorage.setItem('user_token', response.jwtToken)
                         }
                     )
                     .error((error) => console.log(error));
@@ -42,6 +86,6 @@ export const authUser = (username = string, password = string) => {
 }
 
 export const logoutUser = () => {
-    localStorage.removeItem('user_jwtToken');
+    localStorage.removeItem('user_token');
     return { type: constants.LOGOUT_SUCCESS };
 }

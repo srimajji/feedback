@@ -23,6 +23,10 @@ export default keyMirror({
     COMPANY_NEW_SUCCESS: null,
     COMPANY_NEW_FAIL: null,
 
+    COMPANY_LIST_REQUEST: null,
+    COMPANY_LIST_SUCCESS: null,
+    COMPANY_LIST_FAIL: null,
+
     FEEDBACK_NEW: null,
     FEEDBACK_NEW_SUCCESS: null,
     FEEDBACK_NEW_FAIL: null

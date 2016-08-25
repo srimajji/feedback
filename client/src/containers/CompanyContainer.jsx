@@ -4,10 +4,15 @@ import { connect } from 'react-redux';
 
 import Card from '../components/Card';
 import NewCompanyModal from '../components/NewCompanyModal';
+import { getCompanyList } from '../actions';
 
 @connect(state => ({ ...state.CompanyReducer }))
 
 class CompanyContainer extends Component {
+    componentWillMount() {
+        this.props.dispatch(getCompanyList());
+    }
+
     _openNewCompanyModal() {
         $('#new-company-modal').openModal();
     }
