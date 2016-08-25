@@ -8,7 +8,10 @@ const initialState = {
         id: null,
         name: null,
         username: null
-    }
+    },
+    token: null,
+    expiresIn: null,
+    createdAt: null,
 };
 
 function AuthReducer(state = initialState, action) {
@@ -16,14 +19,16 @@ function AuthReducer(state = initialState, action) {
         case constants.LOGIN_REQUEST:
             return Object.assign({}, state, {
                 isFetching: true,
-                isAuthenticated: false,
-                user: action.user
+                isAuthenticated: false
             });
         case constants.LOGIN_SUCCESS:
             return Object.assign({}, state, {
                 isFetching: false,
                 isAuthenticated: true,
                 errorMsg: '',
+                token: action.token,
+                expiresIn: action.expiresIn,
+                createdAt: action.createdAt,
                 user: action.user
             });
         case constants.LOGIN_FAIL:

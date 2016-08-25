@@ -32,10 +32,11 @@ router.route('/')
                 // return information
                 res.json({
                     id: user._id,
+                    createdAt: new Date(),
                     expiresIn: 60 * 24,
                     name: user.name,
                     username: user.username,
-                    jwtToken: token
+                    token: token
                 });
             }
         });

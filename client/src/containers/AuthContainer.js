@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { authUser } from '../actions';
+import ActivityBar from '../components/ActivityBar';
+import { loginUser } from '../actions';
 
 @connect(state => ({...state.AuthReducer}))
 
@@ -14,7 +15,7 @@ class AuthContainer extends Component {
 
     _onFormSubmit(event) {
         event.preventDefault();
-        this.props.dispatch(authUser(this.refs.username.value, this.refs.password.value));
+        this.props.dispatch(loginUser(this.refs.username.value, this.refs.password.value));
     }
 
     _login(event) {
@@ -23,6 +24,7 @@ class AuthContainer extends Component {
     }
 
     render() {
+        const { errorMsg, isFetching } = this.props;
         return (
             <div className='auth-container'>
                 <div className='row'>
@@ -42,6 +44,8 @@ class AuthContainer extends Component {
                         </div>
                     </form>
                 </div>
+                { isFetching ? <ActivityBar /> : null }
+                <p className='red-text center-align'>{errorMsg}</p>
             </div>
         );
     }

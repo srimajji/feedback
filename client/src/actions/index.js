@@ -1,9 +1,55 @@
 import constants from '../constants';
 
-const apiUri = process.env.API_URL;
+const apiUrl = process.env.API_URL;
+const authUrl = apiUrl + 'auth';
+const feedbackUrl = apiUrl + 'feedbacks';
+const companyUrl = apiUrl + 'companies';
+const userUrl = apiUrl + 'users';
 
 const getToken = () => {
-    return localStorage.getItem('user_token');
+    return localStorage.getItem('ssyx_token');
+}
+
+function requestLogin() {
+    return {
+        type: constants.LOGIN_REQUEST
+    }
+}
+
+export const loginUser = (username = string, password = string) => {
+    const config = {
+        url: authUrl,
+        method: 'post',
+        data: {
+            username: username,
+            password: password
+        }
+    }
+
+    return dispatch => {
+        dispatch({ type: constants.LOGIN_REQUEST });
+        
+        $.ajax(config)
+            .done(response=> {
+                localStorage.setItem('ssyx_token', response.token)
+                dispatch({
+                    type: constants.LOGIN_SUCCESS,
+                    token: response.token,
+                    expiresIn: response.expiresIn,
+                    createdAt: response.createdAt,
+                    user: {
+                        id: response.id,
+                        name: response.name,
+                        username: response.username
+                    },
+                })
+            })
+            .error(error => {
+                dispatch({ type: constants.LOGIN_FAIL, errorMsg: error.responseJSON.message });
+            });
+            
+    }
+    
 }
 
 export const newFeedback = (feedback) => {
@@ -15,7 +61,7 @@ export const newFeedback = (feedback) => {
 }
 
 export const newCompany = (company) => {
-    const url = apiUri + 'companies';
+    const url = apiUrl + 'companies';
     const categories = [ {name: 'Employee'}, {name : 'Store' }, { name: 'Suggestions'}];
     const feedbackStatuses = [ {name: 'Open'} , {name: 'In review'}, {name: 'Closed'}];
     const newCompany = Object.assign({}, company, { categories: categories, feedbackStatuses: feedbackStatuses });
@@ -42,7 +88,7 @@ export const newCompany = (company) => {
 }
 
 export const getCompanyList = () => {
-    const url = apiUri + 'companies';
+    const url = apiUrl + 'companies';
     return dispatch => {
         return $.ajax({
             url: url,
@@ -66,7 +112,7 @@ export const getCompanyList = () => {
 
 export const authUser = (username = string, password = string) => {
     // move ajax call somewhere else
-    const uri = apiUri + 'auth';
+    const uri = apiUrl + 'auth';
     const reqData = {
         username: username,
         password: password
