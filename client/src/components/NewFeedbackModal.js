@@ -27,11 +27,15 @@ class NewFeedbackModal extends Component {
 
 	render () {
 		return (
-			<div id='new-feedback-modal' className='modal'>
+			<div id='new-feedback-modal' className='modal bottom-sheet'>
 				<div className='modal-content'>
 					<h4>Add new feedback</h4>
 					<form className='col s12 m6' action='' ref='new_feedback' onSubmit={this._handleFormSubmit}>
 						<div className='row'>
+							<div className="input-field col s12">
+								<input type='text' id='autocomplete-input' class='autocomplete' />
+								<label for='autocomplete-input'>Company</label>
+							</div>
 							<div className='input-field col s12'>
 								<input placeholder='Enter feedback' type='text' className='validate materialize-input' ref='title' required/>
 								<label htmlFor='title' className='active'>Title</label>

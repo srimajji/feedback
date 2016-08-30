@@ -15,7 +15,7 @@ class FeedbackContainer extends Component {
 
     _openNewFeedbackModal() {
         $('#new-feedback-modal').openModal();
-        // return { type: 'FEEDBACK_NEW', title: 'New feedback', body: 'some body here' };
+
     }
 
     render() {
