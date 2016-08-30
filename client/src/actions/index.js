@@ -146,6 +146,14 @@ export const getCompanyList = () => {
     }
 }
 
+export const searchCompanies = (companies, searchTerm) => {
+    return {
+        type: constants.COMPANY_LIST_SEARCH,
+        companies: companies,
+        searchTerm: searchTerm,
+    };
+}
+
 export const authUser = (username = string, password = string) => {
     // move ajax call somewhere else
     const uri = apiUrl + 'auth';

@@ -19,7 +19,7 @@ class NewFeedbackModal extends Component {
 
 	_handleFormSubmit(event) {
 		event.preventDefault();
-		
+
 		const feedback = { title: this.refs.title.value, body: this.refs.body.value };
 		this.props.dispatch(newFeedback(feedback));
 		$('#new-feedback-modal').closeModal();

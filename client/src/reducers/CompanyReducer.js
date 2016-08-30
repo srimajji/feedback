@@ -1,13 +1,10 @@
 import constants from '../constants';
 
 const initialState = {
-    isFetching: true,
-    error: null,
-    companies: [{
-        name: 'Best Buy Fremont', 
-        alias: 'bestbuy',
-        description: 'Electronic store'
-    }]
+    isFetching: false,
+    errorMsg: '',
+    companies: [],
+    companySearchList: []
 };
 
 function CompanyReducer(state = initialState, action) {
@@ -19,7 +16,7 @@ function CompanyReducer(state = initialState, action) {
         case constants.COMPANY_NEW_SUCCESS:
             return Object.assign({}, state, {
                 isFetching: false,
-                error: null,
+                errorMsg: null,
                 companies: [
                     ...state.companies, {
                         id: action.company._id,
@@ -31,12 +28,12 @@ function CompanyReducer(state = initialState, action) {
             });
         case constants.COMPANY_NEW_FAIL:
             return Object.assign({}, state, {
-                error: action.error
+                errorMsg: action.errorMsg
             });
         case constants.COMPANY_LIST_SUCCESS:
             return Object.assign({}, state, {
                 isFetching: false,
-                error: null,
+                errorMsg: null,
                 companies: action.companies.map((company)=> {
                     return Object.assign({}, {
                         id: company._id,
@@ -44,9 +41,14 @@ function CompanyReducer(state = initialState, action) {
                         alias: company.alias,
                         description: company.description
                     });
-                    
+
                 })
             });
+        case constants.COMPANY_LIST_SEARCH:
+            return Object.assign({}, state, {
+                isFetching: false,
+                companySearchList: state.companies.filter(company => company.name.indexOf(action.searchTerm) !== -1)
+            })
         default:
             return state;
     }

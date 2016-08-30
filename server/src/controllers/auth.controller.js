@@ -14,7 +14,7 @@ router.route('/')
             {
                 username: username
             }, (err, user) => {
-            
+
             if(err) {
                 log.error(err);
                 res.status(400).json({ message: 'Not a valid id' });
@@ -33,7 +33,7 @@ router.route('/')
                 res.json({
                     id: user._id,
                     createdAt: new Date(),
-                    expiresIn: 60 * 24,
+                    expiresIn: 600 * 24,
                     name: user.name,
                     username: user.username,
                     token: token
