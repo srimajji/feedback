@@ -28,7 +28,7 @@ export const loginUser = (username = string, password = string) => {
 
     return dispatch => {
         dispatch({ type: constants.LOGIN_REQUEST });
-        
+
         $.ajax(config)
             .done(response=> {
                 localStorage.setItem('ssyx_token', response.token)
@@ -47,9 +47,9 @@ export const loginUser = (username = string, password = string) => {
             .error(error => {
                 dispatch({ type: constants.LOGIN_FAIL, errorMsg: error.responseJSON.message });
             });
-            
+
     }
-    
+
 }
 
 export const newFeedback = (feedback) => {

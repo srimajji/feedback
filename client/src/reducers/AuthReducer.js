@@ -2,7 +2,7 @@ import constants from '../constants';
 
 const initialState = {
     isFetching: false,
-    isAuthenticated: localStorage.getItem('user_token') ? true : false,
+    isAuthenticated: localStorage.getItem('ssyx_token') ? true : false,
     errorMsg: '',
     user: {
         id: null,
@@ -38,8 +38,11 @@ function AuthReducer(state = initialState, action) {
                 errorMsg: action.errorMsg
             });
         case constants.LOGOUT_SUCCESS:
-            return Object.assign({}, state, initialState);
-        default: 
+            return Object.assign({}, state, {
+                isFetching: false,
+                isAuthenticated: false
+            });
+        default:
             return state;
     }
 }
