@@ -33,8 +33,8 @@ class NewFeedbackModal extends Component {
 					<form className='col s12 m6' action='' ref='new_feedback' onSubmit={this._handleFormSubmit}>
 						<div className='row'>
 							<div className="input-field col s12">
-								<input type='text' id='autocomplete-input' class='autocomplete' />
-								<label for='autocomplete-input'>Company</label>
+								<input type='text' id='autocomplete-input' className='autocomplete' />
+								<label htmlFor='autocomplete-input'>Company</label>
 							</div>
 							<div className='input-field col s12'>
 								<input placeholder='Enter feedback' type='text' className='validate materialize-input' ref='title' required/>
