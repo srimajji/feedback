@@ -9,7 +9,7 @@ import { getCompanyList } from '../actions';
 @connect(state => ({ ...state.CompanyReducer }))
 
 class CompanyContainer extends Component {
-    componentWillMount() {
+    componentDidMount() {
         this.props.dispatch(getCompanyList());
     }
 

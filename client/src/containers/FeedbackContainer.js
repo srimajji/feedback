@@ -21,17 +21,10 @@ class FeedbackContainer extends Component {
     render() {
         const { feedbacks, dispatch } = this.props;
         return (
-            <div>
                 <div className='row'>
-                    <div className='col s12'>
-                        { feedbacks.map(( feedback, key ) => {
-                            return <Card title={feedback.title} body={feedback.body} key={key}/>
-                        })}
-                        <a className='waves-effect waves-light btn' onClick={this._openNewFeedbackModal}>New submission</a>
-                    </div>
+                        <Link to='submissions/new' className='waves-effect waves-light btn' >New submission</Link>
+                        { this.props.children }
                 </div>
-                <NewFeedbackModal />
-            </div>
         );
     }
 }
