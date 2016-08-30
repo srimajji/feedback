@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import constants from '../constants';
 import { newFeedback } from '../actions';
 
-@connect(state => ({}))
+@connect(state => ({ companies: state.companies }))
 
 class NewFeedbackModal extends Component {
 	constructor() {

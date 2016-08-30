@@ -53,21 +53,57 @@ export const loginUser = (username = string, password = string) => {
 }
 
 export const newFeedback = (feedback) => {
-    return {
-        type: constants.FEEDBACK_NEW,
-        title: feedback.title,
-        body: feedback.body
-    };
+    return dispatch => {
+        return $.ajax({
+            url: feedbackUrl,
+            type: 'post',
+            data: feedback,
+            headers: { 'x-access-token' : getToken() }
+        })
+        .done(response => {
+            dispatch({
+                type: constants.FEEDBACK_NEW_SUCCESS,
+                feedback: response
+            })
+        })
+        .error(error => {
+            dispatch({
+                type: constants.FEEDBACK_NEW_FAIL,
+                error: error
+            });
+        });
+    }
+}
+
+export const getFeedbacks = () => {
+    return dispatch => {
+        return $.ajax({
+            url: feedbackUrl,
+            type: 'get',
+            headers : { 'x-access-token' : getToken() }
+        })
+        .done(response => {
+            dispatch({
+                type: constants.FEEDBACK_LIST_SUCCESS,
+                feedbacks: response
+            });
+        })
+        .error(error => {
+            dispatch({
+                type: constants.FEEDBACK_LIST_FAIL,
+                error: error
+            });
+        });
+    }
 }
 
 export const newCompany = (company) => {
-    const url = apiUrl + 'companies';
     const categories = [ {name: 'Employee'}, {name : 'Store' }, { name: 'Suggestions'}];
     const feedbackStatuses = [ {name: 'Open'} , {name: 'In review'}, {name: 'Closed'}];
     const newCompany = Object.assign({}, company, { categories: categories, feedbackStatuses: feedbackStatuses });
     return dispatch => {
         return $.ajax({
-            url: url,
+            url: companyUrl,
             type: 'post',
             data: newCompany,
             headers: { 'x-access-token' : getToken() }
@@ -124,7 +160,7 @@ export const authUser = (username = string, password = string) => {
                             type: constants.LOGIN_SUCCESS,
                             user: response
                         });
-                        localStorage.setItem('user_token', response.jwtToken)
+                        localStorage.setItem('ssyx_token', response.jwtToken)
                         }
                     )
                     .error((error) => console.log(error));
@@ -132,6 +168,6 @@ export const authUser = (username = string, password = string) => {
 }
 
 export const logoutUser = () => {
-    localStorage.removeItem('user_token');
+    localStorage.removeItem('ssyx_token');
     return { type: constants.LOGOUT_SUCCESS };
 }

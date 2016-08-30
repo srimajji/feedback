@@ -4,10 +4,15 @@ import { connect } from 'react-redux';
 
 import Card from '../components/Card';
 import NewFeedbackModal from '../components/NewFeedbackModal';
+import { getFeedbacks } from '../actions';
 
 @connect(state => ({ ...state.FeedbackReducer }))
 
 class FeedbackContainer extends Component {
+    componentWillMount() {
+        this.props.dispatch(getFeedbacks());
+    }
+
     _openNewFeedbackModal() {
         $('#new-feedback-modal').openModal();
         // return { type: 'FEEDBACK_NEW', title: 'New feedback', body: 'some body here' };

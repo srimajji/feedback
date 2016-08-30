@@ -9,7 +9,6 @@ const initialState = {
         name: null,
         username: null
     },
-    token: null,
     expiresIn: null,
     createdAt: null,
 };
@@ -26,7 +25,6 @@ function AuthReducer(state = initialState, action) {
                 isFetching: false,
                 isAuthenticated: true,
                 errorMsg: '',
-                token: action.token,
                 expiresIn: action.expiresIn,
                 createdAt: action.createdAt,
                 user: action.user
