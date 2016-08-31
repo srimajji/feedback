@@ -76,6 +76,17 @@ export const newFeedback = (feedback) => {
     }
 }
 
+export const fetchFeedbacks = () => {
+    return {
+        [CALL_API]: {
+            type: 'GET',
+            endpoint: 'feedbacks',
+            authenticated: true,
+            actions: [ constants.FEEDBACK_LIST_REQUEST, constants.FEEDBACK_LIST_SUCCESS, constants.FEEDBACK_LIST_ERROR]
+        }
+    }
+}
+
 export const getFeedbacks = () => {
     return dispatch => {
         return $.ajax({
@@ -102,7 +113,7 @@ export const newCompany = (company) => {
     const categories = [ {name: 'Employee'}, {name : 'Store' }, { name: 'Suggestions'}];
     const feedbackStatuses = [ {name: 'Open'} , {name: 'In review'}, {name: 'Closed'}];
     const newCompany = Object.assign({}, company, { categories: categories, feedbackStatuses: feedbackStatuses });
-    
+
     return {
         [CALL_API]: {
             endpoint: 'companies',

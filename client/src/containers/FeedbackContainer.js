@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
+import ActivityBar from '../components/ActivityBar';
 import Card from '../components/Card';
 import NewFeedbackModal from '../components/NewFeedbackModal';
-import { getFeedbacks } from '../actions';
+import { fetchFeedbacks } from '../actions';
 
 @connect(state => ({ ...state.FeedbackReducer }))
 
 class FeedbackContainer extends Component {
     componentWillMount() {
-        this.props.dispatch(getFeedbacks());
+        this.props.dispatch(fetchFeedbacks());
     }
 
     _openNewFeedbackModal() {
@@ -19,12 +20,15 @@ class FeedbackContainer extends Component {
     }
 
     render() {
-        const { feedbacks, dispatch } = this.props;
+        const { feedbacks, isFetching, dispatch } = this.props;
         return (
-                <div className='row'>
-                        <Link to='submissions/new' className='waves-effect waves-light btn' >New submission</Link>
-                        { this.props.children }
-                </div>
+            <div className='row'>
+                    { isFetching ? <ActivityBar /> : feedbacks.map((feedback, key) => {
+                        const title = feedback.title;
+                        return <Card title={title} body={feedback.body} key={key} />
+                    })}
+                    <Link to='submissions/new' className='waves-effect waves-light btn'>New submission</Link>
+            </div>
         );
     }
 }

@@ -27,12 +27,11 @@ export default keyMirror({
     COMPANY_LIST_SUCCESS: null,
     COMPANY_LIST_FAIL: null,
 
-    COMPANY_LIST_SEARCH: null,
-
     FEEDBACK_NEW: null,
     FEEDBACK_NEW_SUCCESS: null,
     FEEDBACK_NEW_FAIL: null,
 
+    FEEDBACK_LIST_REQUEST: null,
     FEEDBACK_LIST_SUCCESS: null,
     FEEDBACK_LIST_FAIL: null,
 });

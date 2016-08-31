@@ -3,7 +3,7 @@ import constants from '../constants';
 const initialState = {
     isFetching: false,
     errorMsg: null,
-    feedbacks: [{title: 'Sample submission', body: 'submission body'}],
+    feedbacks: [],
 };
 
 function FeedbackReducer(state = initialState, action) {
@@ -22,15 +22,20 @@ function FeedbackReducer(state = initialState, action) {
                     }
                 ]
             });
-        case constants.FEEDBACK_NEW_FAIL: 
+        case constants.FEEDBACK_NEW_FAIL:
             return Object.assign({}, state, {
                 isFetching: false,
                 errorMsg: action.errorMsg
             });
-        case constants.FEEDBACK_LIST_NEW:
+        case constants.FEEDBACK_LIST_REQUEST:
+            return Object.assign({}, state, {
+                isFetching: true
+            });
+        case constants.FEEDBACK_LIST_SUCCESS:
             return Object.assign({}, state, {
                 isFetching: false,
-                feedbacks: actions.feedbacks.map((feedback) => {
+                errorMsg: '',
+                feedbacks: action.response.map((feedback) => {
                     return Object.assign({}, {
                         id: feedback._id,
                         title: feedback.title,

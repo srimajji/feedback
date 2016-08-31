@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 
 import constants from '../constants';
@@ -36,6 +37,7 @@ class NewFeedbackModal extends Component {
 			company: company.id };
 		this.props.dispatch(newFeedback(feedback));
 		$('#new-feedback-modal').closeModal();
+		browserHistory.push('/submissions');
 	}
 
 	render () {
