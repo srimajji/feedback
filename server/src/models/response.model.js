@@ -9,15 +9,15 @@ const commentSchema = mongoose.Schema({
 const responseSchema = mongoose.Schema({
 	title: String,
 	body: { type:String, required: true },
-	feedback: { 
-		type: mongoose.Schema.Types.ObjectId, 
-		ref: 'Feedback', 
-		required: true 
+	feedback: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Feedback',
+		required: true
 	},
-	company: { 
-		type: mongoose.Schema.Types.ObjectId, 
-		ref: 'Company', 
-		required: true 
+	company: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Company',
+		required: true
 	},
 	comments: [commentSchema]
 }, { timestamps: true });

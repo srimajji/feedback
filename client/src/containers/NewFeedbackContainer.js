@@ -13,7 +13,7 @@ class NewFeedbackContainer extends Component {
         super();
         this.state = {
             searchTerm: '',
-            companyClicked: null
+            companyClicked: { name: 'default', categories: ['default'] }
         };
 
         this._onClickCompany = this._onClickCompany.bind(this);
@@ -26,7 +26,7 @@ class NewFeedbackContainer extends Component {
 
     _onClickCompany(company) {
        this.setState({ companyClicked: company });
-        setTimeout($('#new-feedback-modal').openModal(), 1000);       
+       $('#new-feedback-modal').openModal();
     }
 
     _onSearchBarInputChange(event) {
@@ -40,18 +40,9 @@ class NewFeedbackContainer extends Component {
             <div>
                 <div className='row'>
                     <SearchBar onInputChange={this._onSearchBarInputChange} />
-                    <ul className='collection'>
-                        { companyFilteredList.map((company, key) => {
-                            return (
-                                <li className='collection-item' key={key} onClick={() => this._onClickCompany(company)}>
-                                    <span className='title'>{company.name}</span>
-                                    <p>{company.description}</p>
-                                </li>
-                            )
-                        })}
-                    </ul>
+                    <CardList items={companies} onItemClick={this._onClickCompany}/>
                 </div>
-                { this.state.companyClicked ? <NewFeedbackModal company={this.state.companyClicked} /> : null }
+                <NewFeedbackModal company={this.state.companyClicked} />
             </div>
         )
     }

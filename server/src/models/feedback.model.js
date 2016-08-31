@@ -6,10 +6,10 @@ const feedbackSchema = new mongoose.Schema({
 	status: String,
 	category: { type: String, required: true },
 	location: String,
-	company: { 
-		type: mongoose.Schema.Types.ObjectId, 
-		ref: 'Company', 
-		required: true 
+	company: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Company',
+		required: true
 	},
 	response: { type: mongoose.Schema.Types.ObjectId, ref: 'Response' },
 }, { timestamps: true });
