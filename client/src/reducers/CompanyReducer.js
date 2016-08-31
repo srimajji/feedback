@@ -18,11 +18,11 @@ function CompanyReducer(state = initialState, action) {
                 errorMsg: null,
                 companies: [
                     ...state.companies, {
-                        id: action.company._id,
-                        name: action.company.name,
-                        alias: action.company.alias,
-                        description: action.company.description,
-                        categories: action.company.categories
+                        id: action.response._id,
+                        name: action.response.name,
+                        alias: action.response.alias,
+                        description: action.response.description,
+                        categories: action.response.categories
                     }
                 ]
             });

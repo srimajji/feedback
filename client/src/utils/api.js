@@ -2,11 +2,11 @@ import constants from '../constants';
 
 const apiUrl = process.env.API_URL;
 
-function callApi(endpoint, type, authenticated) {
+function callApi(endpoint, type, authenticated, data) {
     const token = localStorage.getItem('ssyx_token') || null;
     let config = {
         type: type,
-        headers: ''
+        data: data
     };
 
     if (authenticated) {
@@ -29,11 +29,11 @@ export default store => next => action => {
         return next(action);
     }
 
-    let { endpoint, type, actions, authenticated } = callAPI;
+    let { endpoint, type, actions, authenticated, data } = callAPI;
 
     const [ requestAction, successAction, errorAction ] = actions;
 
-    return callApi(endpoint, type, authenticated)
+    return callApi(endpoint, type, authenticated, data)
                 .done(response => {
                     next({
                         response,

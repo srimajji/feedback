@@ -102,26 +102,16 @@ export const newCompany = (company) => {
     const categories = [ {name: 'Employee'}, {name : 'Store' }, { name: 'Suggestions'}];
     const feedbackStatuses = [ {name: 'Open'} , {name: 'In review'}, {name: 'Closed'}];
     const newCompany = Object.assign({}, company, { categories: categories, feedbackStatuses: feedbackStatuses });
-    return dispatch => {
-        return $.ajax({
-            url: companyUrl,
-            type: 'post',
+    
+    return {
+        [CALL_API]: {
+            endpoint: 'companies',
+            type: 'POST',
+            authenticated: true,
             data: newCompany,
-            headers: { 'x-access-token' : getToken() }
-        })
-        .done((response) => {
-            dispatch({
-                type: constants.COMPANY_NEW_SUCCESS,
-                company: response
-            });
-        })
-        .error((error) => {
-            dispatch({
-                type: constants.COMPANY_NEW_FAIL,
-                error: error
-            });
-        });
-    };
+            actions: [ constants.COMPANY_NEW, constants.COMPANY_NEW_SUCCESS, constants.COMPANY_NEW_FAIL ]
+        }
+    }
 }
 
 export const fetchCompanyList = () => {
@@ -132,58 +122,6 @@ export const fetchCompanyList = () => {
             authenticated: true,
             actions: [ constants.COMPANY_LIST_REQUEST, constants.COMPANY_LIST_SUCCESS, constants.COMPANY_LIST_FAIL]
         }
-    }
-}
-
-export const getCompanyList = () => {
-    const url = apiUrl + 'companies';
-    return dispatch => {
-        return $.ajax({
-            url: url,
-            type: 'get',
-            headers : { 'x-access-token' : getToken() }
-        })
-        .done(response => {
-            dispatch({
-                type: constants.COMPANY_LIST_SUCCESS,
-                companies: response
-            });
-        })
-        .error(error => {
-            dispatch({
-                type: constants.COMPANY_LIST_FAIL,
-                error: error
-            });
-        });
-    }
-}
-
-export const searchCompanies = (companies, searchTerm) => {
-    return {
-        type: constants.COMPANY_LIST_SEARCH,
-        companies: companies,
-        searchTerm: searchTerm,
-    };
-}
-
-export const authUser = (username = string, password = string) => {
-    // move ajax call somewhere else
-    const uri = apiUrl + 'auth';
-    const reqData = {
-        username: username,
-        password: password
-    };
-    return dispatch => {
-        return $.post(uri, reqData)
-                    .done((response) => {
-                        dispatch({
-                            type: constants.LOGIN_SUCCESS,
-                            user: response
-                        });
-                        localStorage.setItem('ssyx_token', response.jwtToken)
-                        }
-                    )
-                    .error((error) => console.log(error));
     }
 }
 
