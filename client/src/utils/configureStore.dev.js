@@ -4,6 +4,7 @@ import createLogger from 'redux-logger';
 import { persistState } from 'redux-devtools';
 import CombineReducers from '../reducers/CombineReducers';
 import DevTools from '../containers/DevTools';
+import api from './api';
 
 const loggerMiddleware = createLogger();
 
@@ -21,6 +22,7 @@ function configureStore() {
         CombineReducers, 
         enhancer,
         applyMiddleware(
+            api,
             thunkMiddleware
         )
     )

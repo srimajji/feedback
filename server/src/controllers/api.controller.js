@@ -9,7 +9,7 @@ router.use((req, res, next) => {
     if(token) {
         jwt.verify(token, app.get('jwtTokenSecret'), (err, decoded) => {
             if(err) {
-                return res.status(401).json({ success: false, message: 'Failed to authenticate' });
+                return res.status(401).json({ success: false, message: 'Token expired', expiredAt: err.expiredAt });
             } else {
                 req.decoded = decoded;
                 next();

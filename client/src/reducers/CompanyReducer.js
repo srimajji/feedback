@@ -4,7 +4,6 @@ const initialState = {
     isFetching: false,
     errorMsg: '',
     companies: [],
-    companySearchList: []
 };
 
 function CompanyReducer(state = initialState, action) {
@@ -22,7 +21,8 @@ function CompanyReducer(state = initialState, action) {
                         id: action.company._id,
                         name: action.company.name,
                         alias: action.company.alias,
-                        description: action.company.description
+                        description: action.company.description,
+                        categories: action.company.categories
                     }
                 ]
             });
@@ -34,21 +34,18 @@ function CompanyReducer(state = initialState, action) {
             return Object.assign({}, state, {
                 isFetching: false,
                 errorMsg: null,
-                companies: action.companies.map((company)=> {
+                receivedAt: Date.now(),
+                companies: action.response.map((company)=> {
                     return Object.assign({}, {
                         id: company._id,
                         name: company.name,
                         alias: company.alias,
-                        description: company.description
+                        description: company.description,
+                        categories: company.categories,
+                        updatedAt: company.updatedAt
                     });
-
                 })
             });
-        case constants.COMPANY_LIST_SEARCH:
-            return Object.assign({}, state, {
-                isFetching: false,
-                companySearchList: state.companies.filter(company => company.name.indexOf(action.searchTerm) !== -1)
-            })
         default:
             return state;
     }

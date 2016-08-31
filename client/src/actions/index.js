@@ -1,4 +1,5 @@
 import constants from '../constants';
+import { CALL_API } from '../utils/api';
 
 const apiUrl = process.env.API_URL;
 const authUrl = apiUrl + 'auth';
@@ -121,6 +122,17 @@ export const newCompany = (company) => {
             });
         });
     };
+}
+
+export const fetchCompanyList = () => {
+    return {
+        [CALL_API]: {
+            endpoint: 'companies',
+            type: 'GET',
+            authenticated: true,
+            actions: [ constants.COMPANY_LIST_REQUEST, constants.COMPANY_LIST_SUCCESS, constants.COMPANY_LIST_FAIL]
+        }
+    }
 }
 
 export const getCompanyList = () => {

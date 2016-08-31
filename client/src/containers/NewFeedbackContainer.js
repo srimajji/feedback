@@ -4,33 +4,35 @@ import { connect } from 'react-redux';
 import CardList from '../components/CardList';
 import SearchBar from '../components/SearchBar';
 
-import { getCompanyList, searchCompanies } from '../actions';
+import { fetchCompanyList, searchCompanies } from '../actions';
 
 @connect(state => ({ ...state.CompanyReducer }))
 
 class NewFeedbackContainer extends Component {
     constructor() {
         super();
+        this.state = {
+            searchTerm: ''
+        };
 
         this._onSearchBarInputChange = this._onSearchBarInputChange.bind(this);
     }
 
     componentDidMount() {
-        this.props.dispatch(getCompanyList());
+        this.props.dispatch(fetchCompanyList());
     }
 
     _onSearchBarInputChange(event) {
-        const { companies, dispatch } = this.props;
-        const searchTerm = event.target.value;
-		dispatch(searchCompanies(companies, searchTerm));
+        this.setState({ searchTerm: event.target.value });
 	}
 
     render() {
-        const { companySearchList, dispatch } = this.props;
+        const { companies, dispatch } = this.props;
+        const companyFilteredList = companies.filter(company => company.name.indexOf(this.state.searchTerm) !== -1)
         return (
             <div className='row'>
                 <SearchBar onInputChange={this._onSearchBarInputChange} />
-                <CardList items={companySearchList} />
+                <CardList items={companyFilteredList} />
             </div>
         )
     }
