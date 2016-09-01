@@ -37,7 +37,7 @@ class AuthContainer extends Component {
         const { errorMsg, isFetching } = this.props;
         const emailInputView = (
             <div className='input-field col s12'>
-                <input placeholder='email' id='email' type='email' ref='email' />
+                <input placeholder='email' id='email' type='email' ref='email' required/>
                 <label htmlFor='email'>Email</label>
             </div>
         )
@@ -47,12 +47,12 @@ class AuthContainer extends Component {
                     <form className='col s12' ref='login_form' onSubmit={this._onFormSubmit}>
                         <div className='row'>
                             <div className='input-field col s12'>
-                                <input placeholder='Username' id='username' type='text' ref='username'/>
+                                <input placeholder='Username' id='username' type='text' ref='username' required/>
                                 <label htmlFor='username'>Username</label>
                             </div>
                             { this.state.signUp ? emailInputView : null }
                             <div className='input-field col s12'>
-                                <input placeholder='password' id='password' type='password' ref='password' />
+                                <input placeholder='password' id='password' type='password' ref='password' required/>
                                 <label htmlFor='password'>Password</label>
                             </div>
                             <button className="btn waves-effect waves-light col s5 left" onClick={this._onClickSignUp}>{this.state.signUp ? 'Cancel' : 'Sign Up' }</button>
