@@ -5,6 +5,12 @@
 ### Client
 
 1. Basic signup flow
+2. Use user details from json web token for api calls
+3. Fixed company search list within new feedback container
+
+### Server
+
+1. Limit payload being sent via token to only relevant details such as user info
 
 ## 0.2-alpha
 
