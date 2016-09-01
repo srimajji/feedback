@@ -10,7 +10,7 @@
 
 ### Server
 
-1. Limit payload being sent via token to only relevant details such as user info
+1. Limit payload being sent via json web token to only relevant details such as user info
 
 ## 0.2-alpha
 
