@@ -9,7 +9,11 @@ import { loginUser } from '../actions';
 class AuthContainer extends Component {
     constructor() {
         super();
+        this.state = {
+            signUp: false
+        };
 
+        this._onClickSignUp = this._onClickSignUp.bind(this);
         this._onFormSubmit = this._onFormSubmit.bind(this);
     }
 
@@ -23,8 +27,20 @@ class AuthContainer extends Component {
 
     }
 
+    _onClickSignUp(event) {
+        console.log('clicked');
+        this.setState({ signUp: !this.state.signUp });
+        event.preventDefault();
+    }
+
     render() {
         const { errorMsg, isFetching } = this.props;
+        const emailInputView = (
+            <div className='input-field col s12'>
+                <input placeholder='email' id='email' type='email' ref='email' />
+                <label htmlFor='email'>Email</label>
+            </div>
+        )
         return (
             <div className='auth-container'>
                 <div className='row'>
@@ -34,13 +50,13 @@ class AuthContainer extends Component {
                                 <input placeholder='Username' id='username' type='text' ref='username'/>
                                 <label htmlFor='username'>Username</label>
                             </div>
+                            { this.state.signUp ? emailInputView : null }
                             <div className='input-field col s12'>
                                 <input placeholder='password' id='password' type='password' ref='password' />
                                 <label htmlFor='password'>Password</label>
                             </div>
-                            <button className="btn waves-effect waves-light col s12" type='submit'>Log In
-                                <i className="material-icons right">send</i>
-                            </button>
+                            <button className="btn waves-effect waves-light col s5 left" onClick={this._onClickSignUp}>{this.state.signUp ? 'Cancel' : 'Sign Up' }</button>
+                            <button className="btn waves-effect waves-light col s5 right">{ this.state.signUp ? 'Create' : 'Log In'}</button>
                         </div>
                     </form>
                 </div>
