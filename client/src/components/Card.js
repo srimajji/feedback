@@ -9,9 +9,6 @@ const Card = ({ title = 'Title', body = 'Body' }) => {
                 <span className='card-title'>{ title }</span>
                 <p>{ body }</p>
             </div>
-            <div className='card-action right-align'>
-                <a href='#'>Read more</a>
-            </div>
         </div>
     );
 }

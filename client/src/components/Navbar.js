@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 
 import { logoutUser } from '../actions';
 
-@connect(state => ({ 
-    isAuthenticated: state.AuthReducer.isAuthenticated, 
-    user: state.AuthReducer.user 
+@connect(state => ({
+    isAuthenticated: state.AuthReducer.isAuthenticated,
+    user: state.AuthReducer.user
 }))
 
 class Navbar extends Component {
@@ -46,21 +46,21 @@ class Navbar extends Component {
                 <nav className='light-blue' role='navigation'>
                     <div className='nav-wrapper container'>
                         { isAuthenticated ?
-                            <Link to='' className='brand-logo right' onClick={this._onClickLogOut}>Log Out</Link> 
+                            <Link to='' className='brand-logo right' onClick={this._onClickLogOut}>Log Out</Link>
                             : null }
                         { isAuthenticated ?
                             <ul className='left hide-on-med-and-down'>
                                 <li><Link to='/'>Home</Link></li>
-                                <li><Link to='submissions'>Submissions</Link></li>
-                                <li><Link to='companies'>Companies</Link></li>
-                            </ul> 
+                                <li><Link to='/submissions'>Submissions</Link></li>
+                                <li><Link to='/companies'>Companies</Link></li>
+                            </ul>
                             : logoutDesktopMenu
                         }
                         { isAuthenticated ?
                             <ul id='nav-mobile' className='side-nav'>
                                 <li><Link to='/'>Home</Link></li>
-                                <li><Link to='submissions'>Submissions</Link></li>
-                                <li><Link to='companies'>Companies</Link></li>
+                                <li><Link to='/submissions'>Submissions</Link></li>
+                                <li><Link to='/companies'>Companies</Link></li>
                             </ul> : logoutMobileMenu
                         }
                         <a href='#' data-activates='nav-mobile' className='button-collapse'><i className='material-icons'>menu</i></a>

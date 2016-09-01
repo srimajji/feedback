@@ -24,7 +24,7 @@ class FeedbackContainer extends Component {
         return (
             <div className='row'>
                     { isFetching ? <ActivityBar /> : feedbacks.map((feedback, key) => {
-                        const title = feedback.title;
+                        const title = feedback.company.name.toUpperCase() + ':  ' + feedback.title
                         return <Card title={title} body={feedback.body} key={key} />
                     })}
                     <Link to='submissions/new' className='waves-effect waves-light btn'>New submission</Link>
