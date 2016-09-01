@@ -19,6 +19,10 @@ export default keyMirror({
     LOGIN_FAIL: null,
     LOGOUT_SUCCESS: null,
 
+    USER_NEW_REQUEST: null,
+    USER_NEW_SUCCESS: null,
+    USER_NEW_FAIL: null,
+
     COMPANY_NEW: null,
     COMPANY_NEW_SUCCESS: null,
     COMPANY_NEW_FAIL: null,

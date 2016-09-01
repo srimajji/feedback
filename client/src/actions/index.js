@@ -53,6 +53,39 @@ export const loginUser = (username = string, password = string) => {
 
 }
 
+export const createUser = (user) => {
+    const config = {
+        url: apiUrl + 'auth/signup',
+        method: 'POST',
+        data: user
+    }
+
+    return dispatch => {
+        dispatch({ type: constants.USER_NEW_REQUEST });
+
+        $.ajax(config)
+            .done(response=> {
+                localStorage.setItem('ssyx_token', response.token)
+                dispatch({
+                    type: constants.USER_NEW_SUCCESS,
+                    token: response.token,
+                    expiresIn: response.expiresIn,
+                    createdAt: response.createdAt,
+                    user: {
+                        id: response.id,
+                        name: response.name,
+                        username: response.username
+                    },
+                })
+            })
+            .error(error => {
+                dispatch({ type: constants.USER_NEW_FAIL, errorMsg: error.responseJSON.message });
+            });
+
+    }
+
+}
+
 export const newFeedback = (feedback) => {
     return dispatch => {
         return $.ajax({

@@ -1,5 +1,11 @@
 # Release notes
 
+## 0.3-alpha
+
+### Client
+
+1. Basic signup flow
+
 ## 0.2-alpha
 
 ### Client

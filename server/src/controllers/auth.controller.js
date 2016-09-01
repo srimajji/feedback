@@ -45,13 +45,14 @@ router.route('/')
 router.route('/signup')
     .post((req, res) => {
         const user = new User({
-            name: req.body.name,
+            email: req.body.email,
             username: req.body.username,
             password: req.body.password
         });
+        console.log(user);
         user.save((err) => {
             if(err) {
-                log.error(err.errmsg);
+                log.error(err);
                 res.status(400).json({ error: 'User already exists' });
             } else {
                 log.info('User saved successfully ', user.username);
@@ -63,7 +64,7 @@ router.route('/signup')
                         expiresIn: 60 * 24,
                         name: user.name,
                         username: user.username,
-                        jwtToken: token
+                        token: token
                 });
             }
         });

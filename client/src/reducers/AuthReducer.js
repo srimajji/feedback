@@ -40,6 +40,26 @@ function AuthReducer(state = initialState, action) {
                 isFetching: false,
                 isAuthenticated: false
             });
+        case constants.USER_NEW_REQUEST:
+            return Object.assign({}, state, {
+                isFetching: true,
+                isAuthenticated: false
+            });
+        case constants.USER_NEW_SUCCESS:
+            return Object.assign({}, state, {
+                isFetching: false,
+                isAuthenticated: true,
+                errorMsg: '',
+                expiresIn: action.expiresIn,
+                createdAt: action.createdAt,
+                user: action.user
+            });
+        case constants.USER_NEW_FAIL:
+            return Object.assign({}, state, {
+                isFetching: false,
+                isAuthenticated: false,
+                errorMsg: action.errorMsg
+            });
         default:
             return state;
     }
