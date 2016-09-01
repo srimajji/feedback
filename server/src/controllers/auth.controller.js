@@ -25,6 +25,8 @@ router.route('/')
             } else if (user.password !== password) {
                 res.status(400).json({ message: 'Authention failed. Wrong password' });
             } else {
+                delete user.password;
+                console.log('User logged in ', user);
                 const token = jwt.sign(user, req.app.get('jwtTokenSecret'), {
                     expiresIn: 60 * 24 // expires in 24 hours
                 });
@@ -49,12 +51,12 @@ router.route('/signup')
             username: req.body.username,
             password: req.body.password
         });
-        console.log(user);
         user.save((err) => {
             if(err) {
                 log.error(err);
                 res.status(400).json({ error: 'User already exists' });
             } else {
+                delete user.password;
                 log.info('User saved successfully ', user.username);
                 const token = jwt.sign(user, req.app.get('jwtTokenSecret'), {
                         expiresIn: 60 * 24 // expires in 24 hours
