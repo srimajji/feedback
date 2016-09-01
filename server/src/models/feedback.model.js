@@ -11,6 +11,7 @@ const feedbackSchema = new mongoose.Schema({
 		ref: 'Company',
 		required: true
 	},
+	user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
 	response: { type: mongoose.Schema.Types.ObjectId, ref: 'Response' },
 }, { timestamps: true });
 

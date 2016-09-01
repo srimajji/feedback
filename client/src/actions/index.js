@@ -87,25 +87,14 @@ export const createUser = (user) => {
 }
 
 export const newFeedback = (feedback) => {
-    return dispatch => {
-        return $.ajax({
-            url: feedbackUrl,
-            type: 'post',
+    return {
+        [CALL_API]: {
+            type: 'POST',
+            endpoint: 'feedbacks',
+            authenticated: true,
             data: feedback,
-            headers: { 'x-access-token' : getToken() }
-        })
-        .done(response => {
-            dispatch({
-                type: constants.FEEDBACK_NEW_SUCCESS,
-                feedback: response
-            })
-        })
-        .error(error => {
-            dispatch({
-                type: constants.FEEDBACK_NEW_FAIL,
-                error: error
-            });
-        });
+            actions: [ constants.FEEDBACK_NEW_REQUEST, constants.FEEDBACK_NEW_SUCCESS, constants.FEEDBACK_NEW_FAIL]
+        }
     }
 }
 

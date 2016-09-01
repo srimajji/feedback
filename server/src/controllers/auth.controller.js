@@ -6,6 +6,12 @@ const router = express.Router();
 
 const User = require('../models/user.model.js');
 
+const jwtTokenExpiration = 60 * 24;
+
+function generateJwtToken (payload, secret) {
+    return jwt.sign(payload, secret, { expiresIn: jwtTokenExpiration });
+}
+
 router.route('/')
     .post((req, res) => {
         const username = req.body.username;
@@ -25,19 +31,17 @@ router.route('/')
             } else if (user.password !== password) {
                 res.status(400).json({ message: 'Authention failed. Wrong password' });
             } else {
-                delete user.password;
-                console.log('User logged in ', user);
-                const token = jwt.sign(user, req.app.get('jwtTokenSecret'), {
-                    expiresIn: 60 * 24 // expires in 24 hours
-                });
-
-                // return information
-                res.json({
-                    id: user._id,
-                    createdAt: new Date(),
-                    expiresIn: 600 * 24,
+                log.info('User logged in ', user.name);
+                const tokenPayload = {
+                    userId: user._id,
                     name: user.name,
                     username: user.username,
+                    useragent: req.get('User-Agent'),
+                    admin: user.admin || false
+                }
+                const token = generateJwtToken(tokenPayload, req.app.get('jwtTokenSecret'));
+                // return information
+                res.json({
                     token: token
                 });
             }
@@ -56,17 +60,17 @@ router.route('/signup')
                 log.error(err);
                 res.status(400).json({ error: 'User already exists' });
             } else {
-                delete user.password;
                 log.info('User saved successfully ', user.username);
-                const token = jwt.sign(user, req.app.get('jwtTokenSecret'), {
-                        expiresIn: 60 * 24 // expires in 24 hours
-                    });
+                const tokenPayload = {
+                    userId: user._id,
+                    name: user.name,
+                    username: user.username,
+                    useragent: req.get('User-Agent'),
+                    admin: user.admin || false
+                }
+                const token = generateJwtToken(tokenPayload, req.app.get('jwtTokenSecret'));
                 res.json({
-                        id: user._id,
-                        expiresIn: 60 * 24,
-                        name: user.name,
-                        username: user.username,
-                        token: token
+                    token: token
                 });
             }
         });

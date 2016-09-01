@@ -1,3 +1,5 @@
+import jwtDecode from 'jwt-decode';
+
 import constants from '../constants';
 
 const apiUrl = process.env.API_URL;
@@ -11,9 +13,12 @@ function callApi(endpoint, type, authenticated, data) {
 
     if (authenticated) {
         if (token) {
-            config.headers = { 'x-access-token' : token }
+            config.headers = { 'x-access-token' : token };
+            if (data) {
+                data['user'] = jwtDecode(token).userId;
+            }
         } else {
-            throw 'No token saved'
+            throw 'No token saved';
         }
     }
 

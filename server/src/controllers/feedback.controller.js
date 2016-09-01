@@ -50,7 +50,7 @@ router.route('/:id/shallow')
 			.exec((err, feedback) => {
 				if(err) {
 					log.error(err);
-					res.status(400).json({ message: 'Invalid id'});	
+					res.status(400).json({ message: 'Invalid id'});
 				} else {
 					res.json(feedback);
 				}
@@ -59,7 +59,7 @@ router.route('/:id/shallow')
 
 router.route('/')
 	.get((req, res) => {
-		Feedback.find()
+		Feedback.find({ user: req.decoded.userId })
 			.populate('company')
 			.exec((err, feedbacks) => {
 			if(err) {

@@ -9,14 +9,14 @@ router.use((req, res, next) => {
     if(token) {
         jwt.verify(token, app.get('jwtTokenSecret'), (err, decoded) => {
             if(err) {
-                return res.status(401).json({ success: false, message: 'Token expired', expiredAt: err.expiredAt });
+                return res.status(401).json({ message: 'Token expired', expiredAt: err.expiredAt });
             } else {
                 req.decoded = decoded;
                 next();
             }
         });
     } else {
-        return res.status(403).send({ success: false, message: 'No token provided' });
+        return res.status(403).send({ message: 'No token provided' });
     }
 });
 
