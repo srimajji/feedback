@@ -40,7 +40,7 @@ class NewFeedbackContainer extends Component {
             <div>
                 <div className='row'>
                     <SearchBar onInputChange={this._onSearchBarInputChange} />
-                    <CardList items={companies} onItemClick={this._onClickCompany}/>
+                    <CardList items={companyFilteredList} onItemClick={this._onClickCompany}/>
                 </div>
                 <NewFeedbackModal company={this.state.companyClicked} />
             </div>
