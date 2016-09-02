@@ -9,30 +9,30 @@ import api from './api';
 const loggerMiddleware = createLogger();
 
 const enhancer = compose(
-    DevTools.instrument(),
-    persistState(
-        window.location.href.match(
-            /[?&]debug_sessions=([^&#]+)\b/
-        )
-    )
+	DevTools.instrument(),
+	persistState(
+		window.location.href.match(
+			/[?&]debug_sessions=([^&#]+)\b/
+		)
+	)
 );
 
 function configureStore() {
-    const store = createStore(
-        CombineReducers, 
-        enhancer,
-        applyMiddleware(
-            api,
-            thunkMiddleware
-        )
-    )
+	const store = createStore(
+		CombineReducers,
+		enhancer,
+		applyMiddleware(
+			api,
+			thunkMiddleware
+		)
+	)
 
-    if (module.hot) {
-        module.hot.accept('../reducers/CombineReducers', () => 
-            store.replaceReducer(require('../reducers/CombineReducers').default)
-        );
-    }
-    return store;
+	if (module.hot) {
+		module.hot.accept('../reducers/CombineReducers', () =>
+			store.replaceReducer(require('../reducers/CombineReducers').default)
+		);
+	}
+	return store;
 }
 
 export default configureStore;

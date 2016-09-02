@@ -10,11 +10,11 @@ import HomeContainer from './containers/HomeContainer';
 import AuthContainer from './containers/AuthContainer';
 
 export default (
-    <Route path='/' component={MainContainer}>
-        <IndexRoute component={HomeContainer} />
-        <Route path='auth' component={AuthContainer} />
-        <Route path='submissions' component={FeedbackContainer} />
-        <Route path='submissions/new' component={NewFeedbackContainer} />
-        <Route path='companies' component={CompanyContainer} />
-    </Route>
+	<Route path='/' component={MainContainer}>
+		<IndexRoute component={HomeContainer} />
+		<Route path='auth' component={AuthContainer} />
+		<Route path='submissions' component={FeedbackContainer} />
+		<Route path='submissions/new' component={NewFeedbackContainer} />
+		<Route path='companies' component={CompanyContainer} />
+	</Route>
 )

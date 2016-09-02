@@ -10,27 +10,27 @@ import { fetchFeedbacks } from '../actions';
 @connect(state => ({ ...state.FeedbackReducer }))
 
 class FeedbackContainer extends Component {
-    componentWillMount() {
-        this.props.dispatch(fetchFeedbacks());
-    }
+	componentWillMount() {
+		this.props.dispatch(fetchFeedbacks());
+	}
 
-    _openNewFeedbackModal() {
-        $('#new-feedback-modal').openModal();
+	_openNewFeedbackModal() {
+		$('#new-feedback-modal').openModal();
 
-    }
+	}
 
-    render() {
-        const { feedbacks, isFetching, dispatch } = this.props;
-        return (
-            <div className='row'>
-                    { isFetching ? <ActivityBar /> : feedbacks.map((feedback, key) => {
-                        const title = feedback.company.name.toUpperCase() + ':  ' + feedback.title
-                        return <Card title={title} body={feedback.body} key={key} />
-                    })}
-                    <Link to='submissions/new' className='waves-effect waves-light btn'>New submission</Link>
-            </div>
-        );
-    }
+	render() {
+		const { feedbacks, isFetching, dispatch } = this.props;
+		return (
+			<div className='row'>
+				{ isFetching ? <ActivityBar /> : feedbacks.map((feedback, key) => {
+					const title = feedback.company.name.toUpperCase() + ':  ' + feedback.title
+					return <Card title={title} body={feedback.body} key={key} />
+				}) }
+				<Link to='submissions/new' className='waves-effect waves-light btn'>New submission</Link>
+			</div>
+		);
+	}
 }
 
 export default FeedbackContainer;

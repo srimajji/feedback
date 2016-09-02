@@ -13,6 +13,6 @@ import configureStore from './utils/configureStore';
 const store = configureStore();
 
 render(
-    <App store={store} />,
-    document.getElementById('root')
+	<App store={store} />,
+	document.getElementById('root')
 );

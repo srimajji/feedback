@@ -10,13 +10,13 @@ class MainContainer extends Component {
 		const { dispatch, isAuthenticated } = this.props;
 		return (
 			<div>
-                <Navbar />
+				<Navbar />
 				<div className='container'>
 					{ isAuthenticated ?
 						this.props.children : <AuthContainer />
 					}
 				</div>
-            </div>
+			</div>
 		);
 	}
 }

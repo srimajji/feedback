@@ -9,30 +9,30 @@ import { fetchCompanyList } from '../actions';
 @connect(state => ({ ...state.CompanyReducer }))
 
 class CompanyContainer extends Component {
-    componentDidMount() {
-        this.props.dispatch(fetchCompanyList());
-    }
+	componentDidMount() {
+		this.props.dispatch(fetchCompanyList());
+	}
 
-    _openNewCompanyModal() {
-        $('#new-company-modal').openModal();
-    }
+	_openNewCompanyModal() {
+		$('#new-company-modal').openModal();
+	}
 
-    render() {
-        const { companies, dispatch } = this.props;
-        return (
-            <div>
-                <div className='row'>
-                    <div className='col s12'>
-                        { companies.map(( company, key ) => {
-                            return <Card title={company.name} body={company.description} key={key}/>
-                        })}
-                        <a className='waves-effect waves-light btn' onClick={this._openNewCompanyModal}>New company</a>
-                    </div>
-                </div>
-                <NewCompanyModal />
-            </div>
-        );
-    }
+	render() {
+		const { companies, dispatch } = this.props;
+		return (
+			<div>
+				<div className='row'>
+					<div className='col s12'>
+						{ companies.map((company, key) => {
+							return <Card title={company.name} body={company.description} key={key}/>
+						}) }
+						<a className='waves-effect waves-light btn' onClick={this._openNewCompanyModal}>New company</a>
+					</div>
+				</div>
+				<NewCompanyModal />
+			</div>
+		);
+	}
 }
 
 export default CompanyContainer;

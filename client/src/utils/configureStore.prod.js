@@ -8,25 +8,25 @@ import api from './api';
 const loggerMiddleware = createLogger();
 
 const enhancer = compose(
-    persistState(
-        window.location.href.match(
-            /[?&]debug_sessions=([^&#]+)\b/
-        )
-    )
+	persistState(
+		window.location.href.match(
+			/[?&]debug_sessions=([^&#]+)\b/
+		)
+	)
 );
 
 function configureStore() {
-    const store = createStore(
-        CombineReducers, 
-        enhancer,
-        applyMiddleware(
-            api,
-            loggerMiddleware,
-            thunkMiddleware
-        )
-    )
+	const store = createStore(
+		CombineReducers,
+		enhancer,
+		applyMiddleware(
+			api,
+			loggerMiddleware,
+			thunkMiddleware
+		)
+	)
 
-    return store;
+	return store;
 }
 
 export default configureStore;

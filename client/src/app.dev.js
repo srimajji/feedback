@@ -13,18 +13,18 @@ const store = configureStore();
 const container = <AppContainer><App store={store}/></AppContainer>;
 
 ReactDOM.render(
-    container,
-    document.getElementById('root')
+	container,
+	document.getElementById('root')
 );
 
 if (module.hot) {
-    module.hot.accept('./containers/App', ()=> {
-        const RootContainer = require('./containers/App').default; 
-        ReactDOM.render(
-            <AppContainer>
-                <RootContainer store={ store } />
-            </AppContainer>,
-            document.getElementById('root')
-        );
-    });
+	module.hot.accept('./containers/App', () => {
+		const RootContainer = require('./containers/App').default;
+		ReactDOM.render(
+			<AppContainer>
+				<RootContainer store={ store } />
+			</AppContainer>,
+			document.getElementById('root')
+		);
+	});
 } 

@@ -34,18 +34,19 @@ class NewFeedbackModal extends Component {
 			title: this.refs.title.value,
 			body: this.refs.body.value,
 			category: this.refs.category.value,
-			company: company.id };
+			company: company.id
+		};
 		this.props.dispatch(newFeedback(feedback));
 		$('#new-feedback-modal').closeModal();
 		browserHistory.push('/submissions');
 	}
 
-	render () {
+	render() {
 		const { company } = this.props;
 		return (
 			<div id='new-feedback-modal' className='modal'>
 				<div className='modal-content'>
-					<h5>{company.name.toUpperCase()}</h5>
+					<h5>{company.name.toUpperCase() }</h5>
 					<form className='col s12 m6' action='' ref='new_feedback' onSubmit={this._handleFormSubmit}>
 						<div className='row'>
 							<div className='input-field col s12'>
@@ -57,7 +58,7 @@ class NewFeedbackModal extends Component {
 									<option key='0' disabled>Select category</option>
 									{ company.categories.map((category, key) => {
 										return <option value={category.name} key={key}>{category.name}</option>
-									})}
+									}) }
 								</select>
 								<label>Category</label>
 							</div>

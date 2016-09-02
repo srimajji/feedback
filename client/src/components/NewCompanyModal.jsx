@@ -19,13 +19,13 @@ class NewCompanyModal extends Component {
 
 	_handleFormSubmit(event) {
 		event.preventDefault();
-		
+
 		const company = { name: this.refs.name.value, alias: this.refs.alias.value, description: this.refs.description.value };
 		this.props.dispatch(newCompany(company));
 		$('#new-company-modal').closeModal();
 	}
 
-	render () {
+	render() {
 		return (
 			<div id='new-company-modal' className='modal'>
 				<div className='modal-content'>
