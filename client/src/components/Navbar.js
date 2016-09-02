@@ -50,17 +50,17 @@ class Navbar extends Component {
 							: null }
 						{ isAuthenticated ?
 							<ul className='left hide-on-med-and-down'>
-								<li><Link to='/'>Home</Link></li>
-								<li><Link to='/submissions'>Submissions</Link></li>
-								<li><Link to='/companies'>Companies</Link></li>
+								<li><Link to=''>Feed</Link></li>
+								<li><Link to='submissions'>My submissions</Link></li>
+								<li><Link to='companies'>Companies</Link></li>
 							</ul>
 							: logoutDesktopMenu
 						}
 						{ isAuthenticated ?
 							<ul id='nav-mobile' className='side-nav'>
-								<li><Link to='/'>Home</Link></li>
-								<li><Link to='/submissions'>Submissions</Link></li>
-								<li><Link to='/companies'>Companies</Link></li>
+								<li><Link to=''>Feed</Link></li>
+								<li><Link to='submissions'>My submissions</Link></li>
+								<li><Link to='companies'>Companies</Link></li>
 							</ul> : logoutMobileMenu
 						}
 						<a href='#' data-activates='nav-mobile' className='button-collapse'><i className='material-icons'>menu</i></a>

@@ -59,8 +59,10 @@ router.route('/:id/shallow')
 
 router.route('/')
 	.get((req, res) => {
-		Feedback.find({ user: req.decoded.userId })
+		Feedback.find()
+			.or([{ user: req.query.userId }])
 			.populate('company')
+			.sort({ createdAt: 'desc' })
 			.exec((err, feedbacks) => {
 				if (err) {
 					log.error(err);

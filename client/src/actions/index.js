@@ -98,36 +98,15 @@ export const newFeedback = (feedback) => {
 	}
 }
 
-export const fetchFeedbacks = () => {
+export const fetchFeedbacks = (userId) => {
 	return {
 		[CALL_API]: {
 			type: 'GET',
 			endpoint: 'feedbacks',
 			authenticated: true,
+			data: { userId: userId },
 			actions: [constants.FEEDBACK_LIST_REQUEST, constants.FEEDBACK_LIST_SUCCESS, constants.FEEDBACK_LIST_ERROR]
 		}
-	}
-}
-
-export const getFeedbacks = () => {
-	return dispatch => {
-		return $.ajax({
-			url: feedbackUrl,
-			type: 'get',
-			headers: { 'x-access-token': getToken() }
-		})
-			.done(response => {
-				dispatch({
-					type: constants.FEEDBACK_LIST_SUCCESS,
-					feedbacks: response
-				});
-			})
-			.error(error => {
-				dispatch({
-					type: constants.FEEDBACK_LIST_FAIL,
-					error: error
-				});
-			});
 	}
 }
 

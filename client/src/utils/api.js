@@ -15,7 +15,7 @@ function callApi(endpoint, type, authenticated, data) {
 		if (token) {
 			config.headers = { 'x-access-token': token };
 			if (data) {
-				data['user'] = jwtDecode(token).userId;
+				data['userId'] = jwtDecode(token).userId;
 			}
 		} else {
 			throw 'No token saved';
