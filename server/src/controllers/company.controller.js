@@ -8,7 +8,7 @@ router.route('/:id')
 	.get((req, res) => {
 		const id = req.params.id;
 		Company.findById(id, (err, company) => {
-			if(err) {
+			if (err) {
 				log.error(err);
 				res.status(400).json({ message: 'Not a valid id' });
 			} else {
@@ -21,7 +21,7 @@ router.route('/:id')
 		const conditions = { _id: req.params.id };
 		const options = { new: true, fields: '-__v' };
 		Company.findOneAndUpdate(conditions, req.body, options, (err, company) => {
-			if(err) {
+			if (err) {
 				log.error(err);
 				res.status(400).json(err);
 			} else {
@@ -32,7 +32,7 @@ router.route('/:id')
 	.delete((req, res) => {
 		const id = req.params.id;
 		Company.findByIdAndRemove(is, (err) => {
-			if(err) {
+			if (err) {
 				log.error(err);
 				res.status(400).json({ message: 'Not a valid id' });
 			} else {
@@ -45,7 +45,7 @@ router.route('/:id')
 router.route('/')
 	.get((req, res) => {
 		Company.find((err, companies) => {
-			if(err) {
+			if (err) {
 				log.error(err)
 				res.send(500);
 			} else {
@@ -57,7 +57,7 @@ router.route('/')
 		const company = new Company(Object.assign({}, req.body));
 		// save company
 		company.save((err) => {
-			if(err) {
+			if (err) {
 				log.error('Error saving company ', err);
 				res.status(400).send(err);
 			} else {

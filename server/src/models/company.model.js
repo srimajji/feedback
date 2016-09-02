@@ -1,17 +1,17 @@
 const mongoose = require('mongoose');
 
 const categorySchema = mongoose.Schema({
-	name: { 
-		type: String, 
+	name: {
+		type: String,
 		required: true
 	},
 	description: String
 }, { _id: false });
 
 const feedbackStatusSchema = mongoose.Schema({
-	name: { 
-		type: String, 
-		required: true 
+	name: {
+		type: String,
+		required: true
 	},
 	description: String
 }, { _id: false });
@@ -29,6 +29,6 @@ const companySchema = mongoose.Schema({
 	},
 	categories: ['Employee', 'Store', 'Suggestions'],
 	feedbackStatuses: ['Open', 'In Review', 'Closed']
-}, { timestamps: true , select: false });
+}, { timestamps: true, select: false });
 
 module.exports = mongoose.model('Company', companySchema);

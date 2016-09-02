@@ -17,7 +17,7 @@ const app = express();
 const env = app.get('env');
 const appConfig = require('./config.json')[env];
 if (!appConfig) {
-	log.error('Missing configuration for '+ env);
+	log.error('Missing configuration for ' + env);
 	process.exit();
 }
 

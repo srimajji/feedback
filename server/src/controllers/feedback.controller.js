@@ -8,9 +8,9 @@ router.route('/:id')
 	.get((req, res) => {
 		const id = req.params.id;
 		Feedback.findById(id, (err, feedback) => {
-			if(err) {
+			if (err) {
 				log.error(err);
-				res.status(400).json({ message: 'Invalid id'});
+				res.status(400).json({ message: 'Invalid id' });
 			} else {
 				res.json(feedback);
 			}
@@ -21,7 +21,7 @@ router.route('/:id')
 		const conditions = { _id: req.params.id };
 		const options = { new: true, fields: '-__v' };
 		Feedback.findOneAndUpdate(conditions, req.body, options, (err, feedback) => {
-			if(err) {
+			if (err) {
 				log.error(err);
 				res.status(400).json(err);
 			} else {
@@ -32,9 +32,9 @@ router.route('/:id')
 	.delete((req, res) => {
 		const id = req.params.id;
 		Feedback.findByIdAndRemove(id, (err) => {
-			if(err) {
+			if (err) {
 				log.error(err);
-				res.status(400).json({ message: 'Invalid id'});
+				res.status(400).json({ message: 'Invalid id' });
 			} else {
 				res.send(200);
 			}
@@ -48,9 +48,9 @@ router.route('/:id/shallow')
 			.populate('company')
 			.populate('response')
 			.exec((err, feedback) => {
-				if(err) {
+				if (err) {
 					log.error(err);
-					res.status(400).json({ message: 'Invalid id'});
+					res.status(400).json({ message: 'Invalid id' });
 				} else {
 					res.json(feedback);
 				}
@@ -62,18 +62,18 @@ router.route('/')
 		Feedback.find({ user: req.decoded.userId })
 			.populate('company')
 			.exec((err, feedbacks) => {
-			if(err) {
-				log.error(err);
-				res.status(500).json({ message: 'Internal Error' });
-			} else {
-				res.json(feedbacks);
-			}
-		});
+				if (err) {
+					log.error(err);
+					res.status(500).json({ message: 'Internal Error' });
+				} else {
+					res.json(feedbacks);
+				}
+			});
 	})
 	.post((req, res) => {
 		const feedback = new Feedback(Object.assign({}, req.body));
 		feedback.save((err) => {
-			if(err) {
+			if (err) {
 				log.error(err);
 				res.status(400).json({ message: 'Invalid object', error: err });
 			} else {

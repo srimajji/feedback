@@ -8,7 +8,7 @@ const commentSchema = mongoose.Schema({
 
 const responseSchema = mongoose.Schema({
 	title: String,
-	body: { type:String, required: true },
+	body: { type: String, required: true },
 	feedback: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Feedback',

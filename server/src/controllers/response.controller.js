@@ -8,7 +8,7 @@ router.route('/:id')
 	.get((req, res) => {
 		const id = req.params.id;
 		Response.findById(id, (err, response) => {
-			if(err) {
+			if (err) {
 				log.error(err);
 				res.status(400).json({ message: 'Not a valid id' });
 			} else {
@@ -21,7 +21,7 @@ router.route('/:id')
 		const conditions = { _id: req.params.id };
 		const options = { new: true, fields: '-__v' };
 		Response.findOneAndUpdate(conditions, req.body, options, (err, response) => {
-			if(err) {
+			if (err) {
 				log.error(err);
 				res.status(400).json(err);
 			} else {
@@ -32,7 +32,7 @@ router.route('/:id')
 	.delete((req, res) => {
 		const id = req.params.id;
 		Response.findByIdAndRemove(is, (err) => {
-			if(err) {
+			if (err) {
 				log.error(err);
 				res.status(400).json({ message: 'Not a valid id' });
 			} else {
@@ -45,7 +45,7 @@ router.route('/:id')
 router.route('/')
 	.get((req, res) => {
 		Response.find((err, companies) => {
-			if(err) {
+			if (err) {
 				log.error(err)
 				res.send(500);
 			} else {
@@ -57,7 +57,7 @@ router.route('/')
 		const response = new Response(Object.assign({}, req.body));
 		// save response
 		response.save((err) => {
-			if(err) {
+			if (err) {
 				log.error('Error saving response ', err);
 				res.send(err);
 			} else {

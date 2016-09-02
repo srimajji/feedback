@@ -101,38 +101,38 @@ Objects that will be used for this application
   "description": "All the clothes you need you will find here",
   "__v": 0,
   "feedbackStatuses": [
-    {
-      "status": "OPEN"
-    },
-    {
-      "status": "IN REVIEW"
-    },
-    {
-      "status": "CHECKING"
-    },
-    {
-      "status": "CLOSED"
-    }
+	{
+	  "status": "OPEN"
+	},
+	{
+	  "status": "IN REVIEW"
+	},
+	{
+	  "status": "CHECKING"
+	},
+	{
+	  "status": "CLOSED"
+	}
   ],
   "categories": [
-    {
-      "name": "Store Experience",
-      "description": "Anything related to your experience in the store"
-    },
-    {
-      "name": "Building",
-      "description": "Anything related to the building itself"
-    },
-    {
-      "name": "Cleaniless",
-      "description": "Anything related to the cleanliness of the store"
-    }
+	{
+	  "name": "Store Experience",
+	  "description": "Anything related to your experience in the store"
+	},
+	{
+	  "name": "Building",
+	  "description": "Anything related to the building itself"
+	},
+	{
+	  "name": "Cleaniless",
+	  "description": "Anything related to the cleanliness of the store"
+	}
   ],
   "location": {
-    "street": "Market St",
-    "city": "SF",
-    "state": "CA",
-    "zip": 94123
+	"street": "Market St",
+	"city": "SF",
+	"state": "CA",
+	"zip": 94123
   }
 }
 	```
@@ -157,15 +157,15 @@ Objects that will be used for this application
 
 	```
 	  {
-    	"_id": "576ccf30363692a508ba28e8",
-    	"updatedAt": "2016-06-24T06:12:00.101Z",
-    	"createdAt": "2016-06-24T06:12:00.101Z",
-    	"title": "our bad",
-    	"body": "Someone will be over to take care of it 		shortly. Thank you for the feedback!",
-    	"feedback": "576cc4d47c262c41428e2ffe",
-    	"company": "576cc29c2fcc8b48121a6dc3",
-    	"__v": 0,
-    	"comments": []
+		"_id": "576ccf30363692a508ba28e8",
+		"updatedAt": "2016-06-24T06:12:00.101Z",
+		"createdAt": "2016-06-24T06:12:00.101Z",
+		"title": "our bad",
+		"body": "Someone will be over to take care of it 		shortly. Thank you for the feedback!",
+		"feedback": "576cc4d47c262c41428e2ffe",
+		"company": "576cc29c2fcc8b48121a6dc3",
+		"__v": 0,
+		"comments": []
   		}
 	```
 
