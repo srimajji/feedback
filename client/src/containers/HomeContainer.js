@@ -2,17 +2,26 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Navbar from '../components/Navbar';
+import CollapsibleList from '../components/CollapsibleList';
 import Card from '../components/Card';
+import { fetchFeedbacks } from '../actions';
 
-@connect(state => ({ feedbacks: state.FeedbackReducer.feedbacks, companies: state.CompanyReducer.companies }))
+@connect(state => ({ ...state.FeedbackReducer }))
+
 class HomeContainer extends Component {
+	componentDidMount() {
+		$('.collapsible').collapsible({
+			accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+		});
+		this.props.dispatch(fetchFeedbacks());
+	}
+
 	render() {
-		const { feedbacks, companies } = this.props;
+		const { feedbacks } = this.props;
 		return (
 			<div className='row'>
 				<div className='col s12'>
-					<Card title={'Feedbacks'} body={feedbacks.length}/>
-					<Card title={'Companies'} body={companies.length}/>
+					<CollapsibleList items={feedbacks} />
 				</div>
 			</div>
 		);
