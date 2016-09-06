@@ -4,7 +4,9 @@ const morgan = require('morgan');
 const log = require('./config/logger');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const restify = require('express-restify-mongoose');
 
+const Feedback = require('./src/models/feedback.model.js');
 const feedbackController = require('./src/controllers/feedback.controller.js');
 const companyController = require('./src/controllers/company.controller.js');
 const responseController = require('./src/controllers/response.controller.js');
@@ -12,6 +14,7 @@ const userController = require('./src/controllers/user.controller.js');
 const authController = require('./src/controllers/auth.controller.js');
 const apiController = require('./src/controllers/api.controller.js');
 const app = express();
+const router = express.Router();
 
 // check config values
 const env = app.get('env');
@@ -33,6 +36,7 @@ app.use(cors());
 const apiVer = 'v1';
 app.use('/api/auth', authController);
 app.use('/api', apiController); // token required to use below api routes
+// restify.serve(router, Feedback);
 app.use('/api/feedbacks', feedbackController);
 app.use('/api/companies', companyController);
 app.use('/api/responses', responseController);
@@ -40,6 +44,7 @@ app.use('/api/users', userController);
 app.get('/', (req, res) => {
 	res.send('Feedback server up and running');
 });
+app.use(router);
 
 // catch 404 and redirect to error handler
 // app.use((req, res, next) => {

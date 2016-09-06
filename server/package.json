@@ -1,28 +1,29 @@
 {
-	"name": "feedback",
-	"version": "1.0.0",
-	"description": "tool to give feedback to companies",
-	"main": "app.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "NODE_ENV=production node app.js",
-		"start:win": "set NODE_ENV=production&&node app.js",
-		"dev": "nodemon --debug app.js"
-	},
-	"keywords": [
-		"feedback"
-	],
-	"author": "Sri Majji",
-	"license": "ISC",
-	"dependencies": {
-		"body-parser": "^1.15.1",
-		"cors": "^2.7.1",
-		"express": "^4.13.4",
-		"jsonwebtoken": "^7.1.9",
-		"mongoose": "^4.4.20",
-		"mongoose-filter-properties": "^0.1.0",
-		"morgan": "^1.7.0",
-		"winston": "^2.2.0"
-	},
-	"devDependencies": {}
+  "name": "feedback",
+  "version": "1.0.0",
+  "description": "tool to give feedback to companies",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=production node app.js",
+    "start:win": "set NODE_ENV=production&&node app.js",
+    "dev": "nodemon --debug app.js"
+  },
+  "keywords": [
+    "feedback"
+  ],
+  "author": "Sri Majji",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "cors": "^2.7.1",
+    "express": "^4.13.4",
+    "express-restify-mongoose": "^4.1.1",
+    "jsonwebtoken": "^7.1.9",
+    "mongoose": "^4.4.20",
+    "mongoose-filter-properties": "^0.1.0",
+    "morgan": "^1.7.0",
+    "winston": "^2.2.0"
+  },
+  "devDependencies": {}
 }
