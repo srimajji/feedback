@@ -6,7 +6,10 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const restify = require('express-restify-mongoose');
 
-const Feedback = require('./src/models/feedback.model.js');
+const FeedbackModel = require('./src/models/feedback.model.js');
+const UserModel = require('./src/models/user.model.js');
+const CompanyModel = require('./src/models/company.model.js');
+
 const feedbackController = require('./src/controllers/feedback.controller.js');
 const companyController = require('./src/controllers/company.controller.js');
 const responseController = require('./src/controllers/response.controller.js');
@@ -33,10 +36,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 // set up routes
-const apiVer = 'v1';
 app.use('/api/auth', authController);
 app.use('/api', apiController); // token required to use below api routes
-// restify.serve(router, Feedback);
+restify.serve(router, FeedbackModel);
+restify.serve(router, CompanyModel);
+restify.serve(router, UserModel);
+
 app.use('/api/feedbacks', feedbackController);
 app.use('/api/companies', companyController);
 app.use('/api/responses', responseController);
