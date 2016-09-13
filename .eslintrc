@@ -1,0 +1,9 @@
+{ "rules": {
+        /*
+            these rules are temporary;
+            after everything in the mobile app will work again,
+            we should remove these rules and refactor the code accordingly
+        */
+        "quotes": [2, "single"]
+    }
+}
