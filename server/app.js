@@ -36,7 +36,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 // set up routes
-app.use('/api/auth', authController);
+app.use('/auth', authController);
 app.use('/api', apiController); // token required to use below api routes
 restify.serve(router, FeedbackModel);
 restify.serve(router, CompanyModel);
