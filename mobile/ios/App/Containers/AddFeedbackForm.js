@@ -11,7 +11,7 @@ import { FormLabel, FormInput } from 'react-native-elements'
 class AddFeedbackForm extends Component {
 	constructor(props) {
     super(props);
-    this.state = {modalVisible: false};
+    this.state = {modalVisible: true};
   }
 
   setModalVisible(visible) {
@@ -30,23 +30,14 @@ class AddFeedbackForm extends Component {
          <View style={{marginTop: 22}}>
           <View>
             <Text>Hello World!</Text>
-
             <TouchableHighlight onPress={() => {
               this.setModalVisible(!this.state.modalVisible)
             }}>
               <Text>Hide Modal</Text>
             </TouchableHighlight>
-
           </View>
          </View>
         </Modal>
-
-        <TouchableHighlight onPress={() => {
-          this.setModalVisible(true)
-        }}>
-          <Text>Show Modal</Text>
-        </TouchableHighlight>
-
       </View>
     );
   }

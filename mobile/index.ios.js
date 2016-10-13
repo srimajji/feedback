@@ -7,99 +7,35 @@ import React, { Component } from 'react';
 import {
 	AppRegistry,
 	StyleSheet,
-	Text,
-	View
+	NavigatorIOS
 } from 'react-native';
 import {
 	Tabs,
 	Tab,
 	Icon
 } from 'react-native-elements'
-import Home from './ios/App/Components/Home';
-import About from './ios/App/Components/About';
-import AddFeedbackForm from './ios/App/Containers/AddFeedbackForm';
+import Main from './ios/App/Containers/Main';
 
 class mobile extends Component {
-	constructor() {
-		super();
-		this.state = {
-			selectedTab: 'home'
-		};
-
-		this.changeTab = this.changeTab.bind(this);
-	}
-
-	changeTab(selectedTab) {
-		this.setState({ selectedTab: selectedTab })
-	}
 
 	render() {
-		const selectedTab = this.state.selectedTab;
-
 		return (
-				<Tabs sceneStyle={styles.container}>
-					<Tab
-						tabStyle={selectedTab !== 'list-feedback' &&  styles.tabSelectedstyle }
-						titleStyle={[styles.titleStyle]}
-						selectedTitleStyle={[styles.titleSelected]}
-						selected={selectedTab === 'list-feedback'}
-						title={'My Feedbacks'}
-						renderIcon={() => <Icon name='list' size={26} />}
-						renderSelectedIcon={() => <Icon name='list' size={26} />}
-						onPress={() => this.changeTab('list-feedback') }
-					>
-						<Home />
-					</Tab>
-					<Tab
-						tabStyle={selectedTab !== 'add-feedback' &&  styles.tabSelectedstyle }
-						titleStyle={[styles.titleStyle]}
-						selectedTitleStyle={[styles.titleSelected]}
-						selected={selectedTab === 'add-feedback'}
-						title={'Add Feedback'}
-						renderIcon={() => <Icon name='note-add' size={26} />}
-						renderSelectedIcon={() => <Icon name='note-add' size={26} />}
-						onPress={() => this.changeTab('add-feedback') }>
-						<AddFeedbackForm />
-					</Tab>
-					<Tab
-						tabStyle={selectedTab !== 'activity' && styles.tabSelectedstyle}
-						titleStyle={[styles.titleStyle]}
-						selectedTitleStyle={[styles.titleSelected]}
-						selected={selectedTab === 'activity'}
-						title={'Activity'}
-						renderIcon={() => <Icon name='polymer' size={26} />}
-						renderSelectedIcon={() => <Icon name='polymer' size={26} />}
-						onPress={() => this.changeTab('activity') }>
-						<About />
-					</Tab>
-				</Tabs>
+			<NavigatorIOS
+				style={styles.container}
+				barTintColor='#ffffcc'
+				initialRoute={{
+					title: 'Github Notetaker',
+					component: Main
+				}}
+			/>
 		);
-	}
+  }
 }
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		marginTop: 20
-	},
-	welcome: {
-		fontSize: 20,
-		textAlign: 'center',
-		marginTop: 40,
-	},
-	instructions: {
-		textAlign: 'center',
-		color: '#333333',
-		marginBottom: 5,
-	},
-	tabSelectedstyle: {
-		backgroundColor: 'white',
-	},
-	titleStyle: {
-		backgroundColor: 'white',
-	},
-	titleSelected: {
-		backgroundColor: 'transparent',
 	}
 });
 
